@@ -11,7 +11,7 @@
  * @param boolean $positif définit si l'entier doit être positif
  * @return int renvoi l'entier saisi par l'utilisateur
  */
-function DemanderEntier(string $invite,bool $positif=false)
+function demanderEntier(string $invite,bool $positif=false)
 {
     // on demande un nombre à l'utilisateur
     do
@@ -30,7 +30,7 @@ function DemanderEntier(string $invite,bool $positif=false)
  * return array
  */
 
-function CreerTableau(string $invite)
+function creerTableau(string $invite)
 {
     do
     {
@@ -42,7 +42,40 @@ function CreerTableau(string $invite)
     return $tab;
 }
 
+/**
+ * Fonction qui affiche un tableau en séparant ses élément par un tiret
+ *
+ * @param array $tab Tableau à afficher
+ */
+function afficheTableau(array $tab){
+    echo implode("\t", $tab)."\n";
+}
 
- echo DemanderEntier("note :", false)."\n";
+/**
+ * Compare 2 valeurs entre elles
+ *
+ * @param mixed $val1 
+ * @param mixed $val2
+ * @return bool 
+ */
+// function compareTo($val1, $val2) {
+//     if ($val1 == $val2) {
+//         return 0;
+//     }
+//     return ($val1 > $val2) ? 1 : -1; 
+// }
+function compareTo($val1, $val2) {
+   return  rand(0,1)>0.5? -1:1;
+}
+
+
+
+//  echo DemanderEntier("note :", false)."\n";
 // echo DemanderEntier("note positive:", true)."\n";
 // echo DemanderEntier("entrer une valeur :", false)."\n";
+$notes = creerTableau("entrer une note : ");
+afficheTableau($notes);
+usort($notes, 'compareTo');
+afficheTableau($notes);
+usort($notes,function ($a,$b){return $a>$b;});
+// AfficheTableau($notes);
