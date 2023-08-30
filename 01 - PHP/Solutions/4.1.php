@@ -68,14 +68,78 @@ function compareTo($val1, $val2) {
    return  rand(0,1)>0.5? -1:1;
 }
 
+/**
+ * Créer les traits de séparation pour la présentation du tableau
+ *
+ * @param [type] $nbColonne
+ * @return string   traits à afficher
+ */
+function faireTraits($nbColonne)
+{
+    $traits = "" ;
+    for ($j = 0; $j < $nbColonne; $j++) {
 
+        $traits .= "----------------";
+    }
+    $traits .= "\n";
+    return $traits;
+}
+
+
+function remplirTableau2Dimentions($x,$y){
+    for ($i = 0 ; $i <= $x; $i++) {     
+       $tab[]= array_fill(0,$y,"X");
+    }
+    return $tab;
+}
+/**
+ * affiche un tableau a 2 dimensions 
+ *
+ * @param array $tab tableau 2 dimensions
+ * @return void
+ */
+function afficherTableau2Dimentions($tab){
+    // Calcul du nombre de colonnes ($x) et de lignes ($y) dans le tableau
+    $colonnes = count($tab[0]);
+    $lignes = count($tab);
+    
+    // Génération de la ligne de traits pour la bordure supérieure
+    $traits = faireTraits(count($tab[0])+1);
+    echo $traits;
+    
+    // Initialisation de la variable alpha à 'A' pour les étiquettes de colonne
+    $alpha = 'A';
+    
+    // Affichage de la première ligne avec les étiquettes de colonne
+    echo "| \t  \t";
+    for ($i = 0; $i < $colonnes; $i++){
+        echo "| \t" . $alpha . " \t"; // Affiche l'étiquette de colonne
+        $alpha++; // Incrémente la lettre de l'étiquette de colonne
+    }
+    echo "| \t  \t \n"; // Nouvelle ligne pour les données
+    echo $traits; // Affiche la ligne de traits sous les étiquettes de colonne
+
+    // Boucle pour afficher les données du tableau
+    for ($i = 0; $i < $lignes; $i++){
+        echo "| \t" . ($i+1) . " \t"; // Affiche l'étiquette de ligne
+        for ($j = 0; $j < $colonnes; $j++){
+            echo "| \t" . $tab[$i][$j] . " \t"; // Affiche la valeur de la cellule
+        }
+        echo "|\n"; // Nouvelle ligne pour la prochaine ligne de données
+        echo $traits; // Affiche la ligne de traits après chaque ligne de données
+    }
+}
 
 //  echo DemanderEntier("note :", false)."\n";
 // echo DemanderEntier("note positive:", true)."\n";
 // echo DemanderEntier("entrer une valeur :", false)."\n";
-$notes = creerTableau("entrer une note : ");
-afficheTableau($notes);
-usort($notes, 'compareTo');
-afficheTableau($notes);
-usort($notes,function ($a,$b){return $a>$b;});
+// $notes = creerTableau("entrer une note : ");
+// afficheTableau($notes);
+// usort($notes, 'compareTo');
+// afficheTableau($notes);
+// usort($notes,function ($a,$b){return $a>$b;});
 // AfficheTableau($notes);
+
+
+$plateau = remplirTableau2Dimentions(6,5);
+afficherTableau2Dimentions($plateau);
