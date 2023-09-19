@@ -1,4 +1,4 @@
-function deplace(l,t) {
+function deplace(l,t) { // left et top de la ou je veux aller
     var deplacement_ok = true;
     var styleCarre = window.getComputedStyle(document.getElementById('carre'), null);
     var w = parseInt(styleCarre.width);
@@ -48,6 +48,7 @@ function souris_lache() {
 
 function souris_bouge(e) {
     if (enfonce) {
+        console.log(e.clientX - decalageX,e.clientY - decalageY)
         deplace(e.clientX - decalageX,e.clientY - decalageY)
     }
 }

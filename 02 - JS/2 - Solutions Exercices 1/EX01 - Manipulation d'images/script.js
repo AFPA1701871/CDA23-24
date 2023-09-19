@@ -61,18 +61,17 @@ function clickAmpoule3(event){
 
 
 /**************4eme methode ******************** */
-limage = document.getElementsByTagName("img")[0];
-limage.addEventListener("click", clickAmpoule4);
-});
+// limage = document.getElementsByTagName("img")[0];
+// limage.addEventListener("click", clickAmpoule4);
 
-function clickAmpoule3(event){
-    imageCliquee = event.target;
-    if( imageCliquee.getAttribute("data-image")=="eteint")
-    {
-        imageCliquee.src="./IMG/ampoule allumee.png";
-    }
-    else{
-        imageCliquee.src="./IMG/ampoule eteinte.png";
-    }
+// function clickAmpoule4(event){
+//     imageCliquee = event.target;
+//     if( imageCliquee.getAttribute("data-image")=="eteint")
+//     {
+//         imageCliquee.src="./IMG/ampoule allumee.png";
+//     }
+//     else{
+//         imageCliquee.src="./IMG/ampoule eteinte.png";
+//     }
 
-}
+// }
