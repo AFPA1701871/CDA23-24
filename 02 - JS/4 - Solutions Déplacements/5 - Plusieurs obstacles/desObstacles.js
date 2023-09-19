@@ -28,11 +28,10 @@ function depl_ok(tob, lob, wob, hob, t, l, w, h) {
     return true;
 }
 document.onkeydown = function (event) {
-    var event = event || window.event, // pour la compatibilite avec tous les navigateurs
-        keyCode = event.keyCode;
+    
 
     // On détecte l'événement puis selon la fleche, on appelle deplace
-    switch (keyCode) {
+    switch (event.key) {
         case 38:
             deplace(0, -5);
             break;
