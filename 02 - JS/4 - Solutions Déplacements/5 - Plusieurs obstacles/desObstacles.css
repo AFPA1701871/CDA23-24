@@ -1,0 +1,30 @@
+#carre {
+    position: absolute;
+    height: 10vw;
+    width: 10vw;
+    background-color: #CCCCC0;
+    left: 30vw;
+    top: 30vh;
+}
+
+.obstacle {
+    position: absolute;
+    height: 10vh;
+    width: 10vw;
+    background-color: #BBB000;
+}
+
+#obstacle1 {
+    left: 0vw;
+    top: 20vh;
+}
+
+#obstacle2 {
+    left: 80vw;
+    top: 40vh;
+}
+
+#obstacle3 {
+    left: 60vw;
+    top: 60vh;
+}

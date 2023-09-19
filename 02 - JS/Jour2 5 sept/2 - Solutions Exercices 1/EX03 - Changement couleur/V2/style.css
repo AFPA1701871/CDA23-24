@@ -1,0 +1,40 @@
+h1{    
+    text-decoration: underline overline;
+    display: inline-block;
+}
+
+h2{
+    text-decoration: underline;
+    display: inline-block;
+}
+
+h3{
+    text-decoration: underline dotted;
+    display: inline-block;
+    text-indent: 100px;
+}
+
+div h1{
+    text-align: center;
+}
+
+p{
+    text-indent: 50px;
+    color: black;
+}
+
+.para2{
+    color: blue;
+}
+
+.titleA{
+    color: black;
+}
+
+.titleB{
+    color: red;
+}
+
+.titleC{
+    color: green;
+}

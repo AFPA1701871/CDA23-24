@@ -1,0 +1,16 @@
+.grid6{
+    display: grid;
+    grid-template-columns:0.8fr 1fr 0.8fr 1fr 0.8fr 1fr;
+    row-gap : 0.5em;
+    background-color: rgb(240, 122, 122);
+    padding: 0.6em; /* pour Florent et Colin */
+}
+.grid-span6{
+    grid-column: span 6;
+}
+.grid-span4{
+    grid-column: span 4;
+}
+input{
+    width: 80%;
+}

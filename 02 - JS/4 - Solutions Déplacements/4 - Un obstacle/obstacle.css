@@ -1,0 +1,18 @@
+
+#carre {
+    position: absolute;
+    height: 10vw;
+    width: 10vw;
+    background-color: #CCCCC0;
+    left: 20vw;
+    top: 30vh;
+}
+
+#obstacle {
+    position: absolute;
+    height: 10vh;
+    width: 10vw;
+    background-color: #000000;
+    left: 40vw;
+    top: 40vh;
+}

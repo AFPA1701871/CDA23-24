@@ -1,0 +1,21 @@
+﻿ Découverte de Javascript
+ http://www.pierre-giraud.com/javascript/cours-complet/javascript-decouverte-objets.php
+ 
+ Mozilla Developer Network
+https://developer.mozilla.org/fr/docs/Web/JavaScript
+
+Developpez.com
+https://javascript.developpez.com
+
+W3Schools
+https://www.w3schools.com/js/default.asp
+
+Scratch JS
+https://chrome.google.com/webstore/detail/scratch-js/alploljligeomonipppgaahpkenfnfkn
+
+
+Aide Memoire caractere generique
+https://docs.microsoft.com/fr-fr/dotnet/standard/base-types/regular-expression-language-quick-reference
+
+Site pour tester les regex
+https://www.regextester.com/

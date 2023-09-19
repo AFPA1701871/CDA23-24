@@ -1,0 +1,15 @@
+.btn {
+    text-align: center;
+}
+
+#calque {
+    position: absolute;
+    height: 10vw;
+    width: 10vw;
+    background-color: #CC0000;
+    left: 10vw;
+    top: 10vw;
+}
+input{
+    padding: 1em;
+}
