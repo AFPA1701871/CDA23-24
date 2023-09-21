@@ -1,0 +1,1 @@
+https://docs.postgresql.fr/11/ddl-constraints.html

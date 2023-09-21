@@ -1,0 +1,2 @@
+https://www.youtube.com/watch?v=V5CDxByf9SQ
+https://www.postgresqltutorial.com/postgresql-plpgsql/postgresql-create-procedure/
