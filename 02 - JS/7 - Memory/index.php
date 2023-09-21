@@ -60,7 +60,7 @@ function init(){
  * @return void
  */
 function AffichageTypeCarte( ){
-    echo '<template><img  src="./public/plage.jpg" data-image="DATAIMAGE"></img></template>';  
+    echo '<template><img  src="./Images/plage.jpg" data-image="DATAIMAGE"></img></template>';  
 }
 
 

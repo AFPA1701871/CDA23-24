@@ -27,6 +27,9 @@ function gestionDemarrer() {
     }
 }
 
+/**
+ * Gère les paramètres, ffiches les cartes et lance le jeu
+ */
 function demarrerJeu()
 {
     // bloquer l'accès aux paramètres
@@ -34,4 +37,30 @@ function demarrerJeu()
         element.disabled=true;
     });
     demarrer.disabled=true;
+
+    //afficher les cartes
+    nbPair= lesSelect[1].value
+    gererRepartitionCartes(nbPair)
+    cards=document.querySelector(".cards")
+    temp = document.querySelector("template")
+    for (let index = 0; index < nbPair*2; index++) {
+        elt = temp.content.cloneNode(true)
+        cards.appendChild(elt);
+        eltAjoute = cards.Children[index]
+        eltAjoute.addEventListener("click",clickCarte)
+    }
+
+}
+
+function gererRepartitionCartes(nbPair)
+{
+    for (let index = 0; index < nbPair; index++) {
+        tab[index]=index
+        tab[index+nbPair]=index
+        
+    }
+
+}
+function clickCarte(){
+
 }
