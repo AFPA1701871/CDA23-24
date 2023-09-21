@@ -46,20 +46,21 @@ function demarrerJeu()
     for (let index = 0; index < nbPair*2; index++) {
         elt = temp.content.cloneNode(true)
         cards.appendChild(elt);
-        eltAjoute = cards.Children[index]
+        eltAjoute = cards.children[index]
         eltAjoute.addEventListener("click",clickCarte)
     }
 
 }
 
 function gererRepartitionCartes(nbPair)
-{
+{ 
+    tab=[]
     for (let index = 0; index < nbPair; index++) {
-        tab[index]=index
-        tab[index+nbPair]=index
-        
+        tab.push(index)
+        tab.push(index)// on veut 2 fois chaque valeur dans le tableau pour constituer des pairs
     }
-
+    tab.sort(()=>Math.random()-0.5)
+    console.log(tab)
 }
 function clickCarte(){
 
