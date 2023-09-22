@@ -1,0 +1,25 @@
+#jeu {
+    margin: 0 auto 0 auto;
+}
+
+button.case,
+button.emptycase {
+    width: 10vw;
+    height: 10vw;
+    font-size: 2em;
+    float: left;
+    border: solid 1pt black;
+    margin: 1px 2px 1px 2px;
+}
+
+button.emptycase {
+    background-color: inherit;
+    border: none;
+}
+
+hr {
+    clear: both;
+    visibility: hidden;
+    margin: 0;
+    padding: 0;
+}
