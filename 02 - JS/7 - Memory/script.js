@@ -81,9 +81,27 @@ function clickCarte(event) {
         if (!tabCartesRetournees.includes(card)) // pour eviter le clic 2 fois sur la même carte
             tabCartesRetournees.push(card);
         if (tabCartesRetournees.length == 2) { // au 2ème clic on entre avec longueur =1, on retourne une carte donc longueur =2
-           if ( CheckCard(tabCartesRetournees)){
+            if (CheckCard(tabCartesRetournees)) {
+                // les cartes sont les m^mes
+                //on retire les listeners de ces cartes
+                tabCartesRetournees.forEach(element => {
+                    element.removeEventListener("click", clickCarte)
+                });
 
-           }
+                //on vide le tableau des cartes cliquées
+                tabCartesRetournees = []
+            }
+            else {
+                // les cartes ne sont pas les mêmes 
+                setTimeout(() => {
+                    tabCartesRetournees.forEach(element => {
+                        FlipCard(element, false)
+                    })
+
+                    //on vide le tableau des cartes cliquées
+                    tabCartesRetournees = []
+                }, 3000)
+            }
         }
     }
 }
@@ -104,12 +122,12 @@ function FlipCard(card, verso) {
  * @param {*} tab 
  * @returns vrai si les cartes sont identiques faux sinon
  */
-function CheckCard(tab){
+function CheckCard(tab) {
     let dataimage = tab[0].getAttribute("data-image")
-    let index=1
-    while (index<tab.length &&  tab[index].getAttribute("data-image")== dataimage ) {
+    let index = 1
+    while (index < tab.length && tab[index].getAttribute("data-image") == dataimage) {
         index++
     }
-    if (index==tab.length) return true
+    if (index == tab.length) return true
     return false
 }
