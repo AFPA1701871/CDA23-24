@@ -1,3 +1,8 @@
+
+/************************LES VARIABLES ******************************************** */
+tabCartesRetournees = []; // contient les cartes affichés en même temps
+
+/************************LES LISTENERS ******************************************** */
 // gestion des combobox
 lesSelect = document.querySelectorAll("select");
 if (lesSelect != undefined) {
@@ -8,7 +13,7 @@ if (lesSelect != undefined) {
 // gestion du click sur reset
 reset = document.querySelector("#reset")
 if (reset != undefined) {
-    reset.addEventListener("click", ()=>{
+    reset.addEventListener("click", () => {
         location.reload();
     })
 }
@@ -18,6 +23,7 @@ if (demarrer != undefined) {
     demarrer.addEventListener("click", demarrerJeu)
 }
 
+/************************LES FONCTIONS ******************************************** */
 /**
  * Active le bouton quand les combos sont renseignées
  */
@@ -30,38 +36,80 @@ function gestionDemarrer() {
 /**
  * Gère les paramètres, ffiches les cartes et lance le jeu
  */
-function demarrerJeu()
-{
+function demarrerJeu() {
     // bloquer l'accès aux paramètres
     lesSelect.forEach(element => {
-        element.disabled=true;
+        element.disabled = true;
     });
-    demarrer.disabled=true;
+    demarrer.disabled = true;
+
+    nbPair = lesSelect[1].value
+    // Preparer la repartition aléatoire des cartes
+    tabCartes = gererRepartitionCartes(nbPair)
 
     //afficher les cartes
-    nbPair= lesSelect[1].value
-    gererRepartitionCartes(nbPair)
-    cards=document.querySelector(".cards")
+    cards = document.querySelector(".cards")
     temp = document.querySelector("template")
-    for (let index = 0; index < nbPair*2; index++) {
+    for (let index = 0; index < nbPair * 2; index++) {
         elt = temp.content.cloneNode(true)
         cards.appendChild(elt);
         eltAjoute = cards.children[index]
-        eltAjoute.addEventListener("click",clickCarte)
+        eltAjoute.addEventListener("click", clickCarte)
+        eltAjoute.setAttribute("data-image", tabCartes[index])
     }
-
 }
-
-function gererRepartitionCartes(nbPair)
-{ 
-    tab=[]
+/**
+ * Met un numero pour chaque pair 2 fois dans le tableau et le trie aléatoirement
+ * @param {*} nbPair 
+ */
+function gererRepartitionCartes(nbPair) {
+    tab = []
     for (let index = 0; index < nbPair; index++) {
-        tab.push(index)
-        tab.push(index)// on veut 2 fois chaque valeur dans le tableau pour constituer des pairs
+        tab.push(index + 1)
+        tab.push(index + 1)// on veut 2 fois chaque valeur dans le tableau pour constituer des pairs
     }
-    tab.sort(()=>Math.random()-0.5)
+    tab.sort(() => Math.random() - 0.5)
     console.log(tab)
+    return tab
 }
-function clickCarte(){
 
+
+function clickCarte(event) {
+    let card = event.target
+    if (tabCartesRetournees.length < 2) {
+        FlipCard(card, true);
+        if (!tabCartesRetournees.includes(card)) // pour eviter le clic 2 fois sur la même carte
+            tabCartesRetournees.push(card);
+        if (tabCartesRetournees.length == 2) { // au 2ème clic on entre avec longueur =1, on retourne une carte donc longueur =2
+           if ( CheckCard(tabCartesRetournees)){
+
+           }
+        }
+    }
+}
+
+
+/**
+ * Retourne la carte
+ * si verso est vrai, on affiche l'image, sinon on remets la plage
+ * @param {*} card balise image concernée
+ * @param {*} verso  boolean
+ */
+function FlipCard(card, verso) {
+    card.src = verso ? "./Images/" + card.getAttribute("data-image") + ".jpg" : "./Images/plage.jpg"
+}
+
+/**
+ * Vérifie si les cartes sont identiques
+ * @param {*} tab 
+ * @returns vrai si les cartes sont identiques faux sinon
+ */
+function CheckCard(tab){
+    let dataimage = tab[0].getAttribute("data-image")
+    let index=1
+    while (index<tab.length &&  tab[index].getAttribute("data-image")== dataimage ) {
+        index++
+    }
+    if (index==tab.length) return true
+    return false
 }
