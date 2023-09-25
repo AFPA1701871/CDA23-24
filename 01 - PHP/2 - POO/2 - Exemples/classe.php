@@ -1,9 +1,9 @@
 <?php
-class toto
+class Toto
 {
 
     /*****************Attributs***************** */
-    private $_nom;
+    private  $_nom;
 
     /*****************Accesseurs***************** */
     public function getNom()
@@ -11,7 +11,7 @@ class toto
         return $this->_nom;
     }
 
-    public function setNom($nom)
+    public function setNom(?string $nom)
     {
         $this->_nom = $nom;
     }
@@ -43,9 +43,9 @@ class toto
      *
      * @return String
      */
-    public function toString()
+    public function __toString()
     {
-        return "";
+        return "nom : ".$this->getNom();
     }
 
     /**
