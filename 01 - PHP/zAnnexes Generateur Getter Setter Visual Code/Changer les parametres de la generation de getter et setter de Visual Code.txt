@@ -1,0 +1,4 @@
+Changer les parametres de la generation de getter et setter de Visual Code
+
+Installer l'extension phproberto.vscode-php-getters-setters
+Remplacer les fichiers Property.js, extension.js et resolver.js dans C:\Users\1701871\.vscode\extensions\phproberto.vscode-php-getters-setters-1.2.3\out
