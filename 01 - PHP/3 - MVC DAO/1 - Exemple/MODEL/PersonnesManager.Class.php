@@ -32,30 +32,43 @@ class PersonnesManager
         $query->execute();
     }
 
+    // public static function findById($id)
+    // {
+    //     $db = DbConnect::getDb();
+    //     $id = (int) $id;
+    //     $q = $db->query("SELECT * from Personnes WHERE idPersonne =" . $id);
+    //     $results = $q->fetch(PDO::FETCH_ASSOC);
+    //     // die(var_dump($results));
+    //     if ($results != false)
+    //     {
+    //         return new Personnes($results);
+    //     }
+    //     return false;
+    // }
+    // public static function getList()
+    // {
+    //     $db = DbConnect::getDb();
+    //     $liste = [];
+    //     $q = $db->query("SELECT * from Personnes ");
+    //     while ($donnees = $q->fetch(PDO::FETCH_ASSOC))
+    //     {
+    //         if ($donnees != false)
+    //         {
+    //             $liste[] = new Personnes($donnees);
+    //         }
+    //     }
+    //     return $liste;
+    // }
+
+
     public static function findById($id)
     {
-        $db = DbConnect::getDb();
-        $id = (int) $id;
-        $q = $db->query("SELECT * from Personnes WHERE idPersonne =" . $id);
-        $results = $q->fetch(PDO::FETCH_ASSOC);
-        if ($results != false)
-        {
-            return new Personnes($results);
-        }
-        return false;
+        DAO::select("Personnes",null,["idPersonne"=>$id]);
     }
-    public static function getList()
-    {
-        $db = DbConnect::getDb();
-        $liste = [];
-        $q = $db->query("SELECT * from Personnes ");
-        while ($donnees = $q->fetch(PDO::FETCH_ASSOC))
-        {
-            if ($donnees != false)
-            {
-                $liste[] = new Personnes($donnees);
-            }
-        }
-        return $liste;
-    }
+    
+    public static function getList( ?array $colonnes = null, ?array $conditions = null, ?array $orderBy = null, ?string $limit = null, ?bool $debug = false)
+     {
+        DAO::select("Personnes",$colonnes,$conditions,$orderBy,$limit,$debug);
+     }
+
 }
