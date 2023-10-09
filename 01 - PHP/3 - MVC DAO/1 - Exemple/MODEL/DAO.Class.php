@@ -1,9 +1,43 @@
 <?php
 class DAO
 {
+    /**
+	 * permet de faire un select paramétré sur une table
+     * 
+	 * @param string $table => contient Nom de la table sur laquelle la requête sera effectuée.
+	 * Exemple : nomTable => "FROM nomTable"
+     * 
+	 * @param array $nomColonnes => contient le noms des champs désirés dans la requête.
+	 * Exemple :  [nomColonne1,nomColonne2] => "SELECT nomColonne1, nomColonne2"
+	 *
+	 * @param array $conditions => null par défaut, attendu un tableau associatif 
+	 * qui peut prendre plusieurs formes en fonction de la complexité des conditions.
+	 *  Exemples : tableau associatif
+	 *  [nomColonne => '1'] => "WHERE nomColonne = 1"
+	 *  [nomColonne => '!1'] => "WHERE nomColonne != 1"
+	 *  [nomColonne => ''] => "WHERE nomColonne is null "
+	 *  [nomColonne => ['1','3']] => "WHERE nomColonne in (1,3)"
+	 *  [nomColonne => '%abcd%'] => "WHERE nomColonne like "%abcd%" "
+	 *  [nomColonne => '1->5'] => "WHERE nomColonne BETWEEN 1 and 5 "
+	 *  [nomColonne => '>5'] => "WHERE nomColonne > 5 "
+	 *  Si il y a plusieurs conditions alors :
+	 *  [nomColonne1 => '1', nomColonne2 => '%abcd%' ] => "WHERE nomColonne1 = 1 AND nomColonne2 LIKE "%abcd%"
+	 * 	
+	 * @param string $orderBy => null par défaut, contient un tableau qui contient les noms de colonnes et un boolean vrai si le tri est ascendant
+	 * Exemple :["nomColonne1"=>false , "nomColonne2"=>true] => "Order By nomColonne1 , nomColonne2 DESC"
+	 *
+	 * @param string $limit  => null par défaut, contient un string pour donner la délimitations des enregistrements de la BDD
+	 * Exemples :
+	 * "1" => "LIMIT 1"
+	 * "1,2"=> "LIMIT 1,2"
+	 *
+	 * @param bool $debug => contient faux par défaut mais s'il on le met a vrai, on affiche la requete qui est effectuée.
+	 *
+	 * @return [array] $liste => résultat de la requête revoie false si la requête s'est mal passé sinon renvoie un tableau.
+	 */
     public static function select(string $table, ?array $colonnes = null, ?array $conditions = null, ?array $orderBy = null, ?string $limit = null, ?bool $debug = false)
     {
-        // verif ;
+        // INJECTIOn SQL : verif ;
         $verif = $table . json_encode($colonnes) . json_encode($conditions) . json_encode($orderBy) . $limit;
         if (!strpos($verif, ";"))
         {
