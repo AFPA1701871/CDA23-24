@@ -3,108 +3,99 @@ class DAO
 {
 
     public static function add($obj)
-    {
-        $db = DbConnect::getDb();
-        $class = get_class($obj);
-        $colonnes = DAO::getAttributs($obj);
-        $requ = "INSERT INTO gta_" . $class . "(";
-        $values = "";
-        $bindValue = [];
+	{
+		$db = DbConnect::getDb();
+		$class = get_class($obj);
+		$colonnes = $class::getAttributes();
+		$requ = "INSERT INTO ". $class . "(";
+		$values = "";
 
-        for ($i = 1; $i < count($colonnes); $i++)
-        {
-            $methode = "get" . ucfirst($colonnes[$i]);
-            if ($obj->$methode() !== null)
-            {
-                $requ .= $colonnes[$i] . ",";
-                $values .= ":" . $colonnes[$i] . ",";
-            }
-        }
-        $requ = substr($requ, 0, strlen($requ) - 1);
-        $values = substr($values, 0, strlen($values) - 1);
-        $requ .= ") VALUES (" . $values . ")";
-        $q = $db->prepare($requ);
+		for ($i = 1; $i < count($colonnes); $i++) {
+			$methode = "get" . ucfirst($colonnes[$i]);
+			if ($obj->$methode() !== null) {
+				$requ .= $colonnes[$i] . ",";
+				$values .= ":" . $colonnes[$i] . ",";
+			}
+		}
+		$requ = substr($requ, 0, strlen($requ) - 1);
+		$values = substr($values, 0, strlen($values) - 1);
+		$requ .= ") VALUES (" . $values . ")";
+		$q = $db->prepare($requ);
 
-        for ($i = 1; $i < count($colonnes); $i++)
-        {
-            $methode = "get" . ucfirst($colonnes[$i]);
-            if ($obj->$methode() !== null)
-            {
-                $q->bindValue(":" . $colonnes[$i], $obj->$methode());
-            }
+		for ($i = 1; $i < count($colonnes); $i++) {
+			$methode = "get" . ucfirst($colonnes[$i]);
+			if ($obj->$methode() !== null)
+				$q->bindValue(":" . $colonnes[$i], $obj->$methode());
+		}
+		$q->execute();
+		return $db->lastInsertId();
+	}
 
-        }
-        $q->execute();
-        return $db->lastInsertId();
-    }
+	public static function update($obj)
+	{
+		$db = DbConnect::getDb();
+		$class = get_class($obj);
+		$colonnes = $class::getAttributes();
+		$requ = "UPDATE ". $class . " SET ";
 
-    public static function update($obj)
-    {
-        $db = DbConnect::getDb();
-        $class = get_class($obj);
-        $colonnes = DAO::getAttributs($obj);
-        $requ = "UPDATE gta_" . $class . " SET ";
+		for ($i = 1; $i < count($colonnes); $i++) {
+			$requ .= $colonnes[$i] . "=:" . $colonnes[$i] . ",";
+		}
+		$requ = substr($requ, 0, strlen($requ) - 1);
+		$requ .= " WHERE " . $colonnes[0] . "=:" . $colonnes[0];
 
-        for ($i = 1; $i < count($colonnes); $i++)
-        {
-            $requ .= $colonnes[$i] . "=:" . $colonnes[$i] . ",";
-        }
-        $requ = substr($requ, 0, strlen($requ) - 1);
-        $requ .= " WHERE " . $colonnes[0] . "=:" . $colonnes[0];
+		$q = $db->prepare($requ);
 
-        $q = $db->prepare($requ);
+		for ($i = 0; $i < count($colonnes); $i++) {
+			$methode = "get" . ucfirst($colonnes[$i]);
+			$q->bindValue(":" . $colonnes[$i], $obj->$methode());
+		}
+		return $q->execute();
+	}
 
-        for ($i = 0; $i < count($colonnes); $i++)
-        {
-            $methode = "get" . ucfirst($colonnes[$i]);
-            $q->bindValue(":" . $colonnes[$i], $obj->$methode());
-        }
-        return $q->execute();
-    }
-
-    public static function delete($obj)
-    {
-        $db = DbConnect::getDb();
-        $class = get_class($obj);
-        $colonnes = DAO::getAttributs($obj);
-        $methode = "get" . ucfirst($colonnes[0]);
-        return $db->query("DELETE FROM gta_" . $class . " WHERE " . $colonnes[0] . " = " . $obj->$methode());
-    }
+	public static function delete($obj)
+	{
+		$db = DbConnect::getDb();
+		$class = get_class($obj);
+		$colonnes = $class::getAttributes();
+		$methode = "get" . ucfirst($colonnes[0]);
+		return $db->query("DELETE FROM ". $class . " WHERE " . $colonnes[0] . " = " . $obj->$methode());
+	}
 
     /**
-     * permet de faire un select paramétré sur une table
-     *
-     * @param string $table => contient Nom de la table sur laquelle la requête sera effectuée.
-     * Exemple : nomTable => "FROM nomTable"
-     *
-     * @param array $nomColonnes => contient le noms des champs désirés dans la requête.
-     * Exemple :  [nomColonne1,nomColonne2] => "SELECT nomColonne1, nomColonne2"
-     *
-     * @param array $conditions => null par défaut, attendu un tableau associatif
-     * qui peut prendre plusieurs formes en fonction de la complexité des conditions.
-     *  Exemples : tableau associatif
-     *  [nomColonne => '1'] => "WHERE nomColonne = 1"
-     *  [nomColonne => '!1'] => "WHERE nomColonne != 1"
-     *  [nomColonne => ''] => "WHERE nomColonne is null "
-     *  [nomColonne => ['1','3']] => "WHERE nomColonne in (1,3)"
-     *  [nomColonne => '%abcd%'] => "WHERE nomColonne like "%abcd%" "
-     *  [nomColonne => '1->5'] => "WHERE nomColonne BETWEEN 1 and 5 "
-     *  [nomColonne => '>5'] => "WHERE nomColonne > 5 "
-     *  Si il y a plusieurs conditions alors :
-     *  [nomColonne1 => '1', nomColonne2 => '%abcd%' ] => "WHERE nomColonne1 = 1 AND nomColonne2 LIKE "%abcd%"
-     *
-     * @param string $orderBy => null par défaut, contient un tableau qui contient les noms de colonnes et un boolean vrai si le tri est ascendant
-     * Exemple :["nomColonne1"=>false , "nomColonne2"=>true] => "Order By nomColonne1 , nomColonne2 DESC"
-     *
-     * @param string $limit  => null par défaut, contient un string pour donner la délimitations des enregistrements de la BDD
-     * Exemples :
-     * "1" => "LIMIT 1"
-     * "1,2"=> "LIMIT 1,2"
-     *
-     * @param bool $debug => contient faux par défaut mais s'il on le met a vrai, on affiche la requete qui est effectuée.
-     *
-     * @return [array] $liste => résultat de la requête revoie false si la requête s'est mal passé sinon renvoie un tableau.
-     */
+	 * permet de faire un select paramétré sur une table
+     * 
+	 * @param string $table => contient Nom de la table sur laquelle la requête sera effectuée.
+	 * Exemple : nomTable => "FROM nomTable"
+     * 
+	 * @param array $nomColonnes => contient le noms des champs désirés dans la requête.
+	 * Exemple :  [nomColonne1,nomColonne2] => "SELECT nomColonne1, nomColonne2"
+	 *
+	 * @param array $conditions => null par défaut, attendu un tableau associatif 
+	 * qui peut prendre plusieurs formes en fonction de la complexité des conditions.
+	 *  Exemples : tableau associatif
+	 *  [nomColonne => '1'] => "WHERE nomColonne = 1"
+	 *  [nomColonne => '!1'] => "WHERE nomColonne != 1"
+	 *  [nomColonne => ''] => "WHERE nomColonne is null "
+	 *  [nomColonne => ['1','3']] => "WHERE nomColonne in (1,3)"
+	 *  [nomColonne => '%abcd%'] => "WHERE nomColonne like "%abcd%" "
+	 *  [nomColonne => '1->5'] => "WHERE nomColonne BETWEEN 1 and 5 "
+	 *  [nomColonne => '>5'] => "WHERE nomColonne > 5 "
+	 *  Si il y a plusieurs conditions alors :
+	 *  [nomColonne1 => '1', nomColonne2 => '%abcd%' ] => "WHERE nomColonne1 = 1 AND nomColonne2 LIKE "%abcd%"
+	 * 	
+	 * @param string $orderBy => null par défaut, contient un tableau qui contient les noms de colonnes et un boolean vrai si le tri est ascendant
+	 * Exemple :["nomColonne1"=>false , "nomColonne2"=>true] => "Order By nomColonne1 , nomColonne2 DESC"
+	 *
+	 * @param string $limit  => null par défaut, contient un string pour donner la délimitations des enregistrements de la BDD
+	 * Exemples :
+	 * "1" => "LIMIT 1"
+	 * "1,2"=> "LIMIT 1,2"
+	 *
+	 * @param bool $debug => contient faux par défaut mais s'il on le met a vrai, on affiche la requete qui est effectuée.
+	 *
+	 * @return [array] $liste => résultat de la requête revoie false si la requête s'est mal passé sinon renvoie un tableau.
+	 */
     public static function select(string $table, ?array $colonnes = null, ?array $conditions = null, ?array $orderBy = null, ?string $limit = null, ?bool $debug = false)
     {
         // INJECTION SQL : verif ;
@@ -115,7 +106,7 @@ class DAO
             $liste = [];
             $db = DbConnect::getDb();
             $requete = "SELECT ";
-            $requete .= self::setColonnes($colonnes, $classe);
+            $requete .= self::setColonnes($colonnes,$classe);
             $requete .= " FROM " . $table;
             $requete .= self::setConditions($conditions);
             $requete .= self::setOrderBy($orderBy, $requete);
@@ -143,7 +134,7 @@ class DAO
      * @param string|null $class    La classe pour retrouver les colonnes
      * @return string Liste des colonnes à utiliser
      */
-    private static function setColonnes(?array $colonnes, ?string $class)
+    private static function setColonnes(?array $colonnes,?string $class)
     {
         if ($colonnes != null)
         {
@@ -222,26 +213,5 @@ class DAO
             $retour = substr($retour, 0, -2);
         }
         return $retour;
-    }
-/**
- * Détermine les attributs d'une classe non static
- *
- * @param [type] $obj
- * @return array    tableau contenant les attributs
- */
-    private static function getAttributs($obj)
-    {
-        // récupération des propriétés de la classe non static
-        $properties = (new ReflectionClass($obj))->getProperties();
-        $propertiesStatic = (new ReflectionClass($obj))->getProperties(ReflectionProperty::IS_STATIC);
-        $properties = array_diff($properties, $propertiesStatic);
-
-        $propertiesListe = [];
-        // création de la liste des propriétés
-        foreach ($properties as $property)
-        {
-            $propertiesListe[] = substr($property->getName(), 1);
-        }
-        return $propertiesListe;
     }
 }
