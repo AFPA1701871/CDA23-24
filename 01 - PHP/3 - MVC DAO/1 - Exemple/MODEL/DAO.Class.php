@@ -140,7 +140,7 @@ class DAO
         {
             return implode(', ', $colonnes);
         }
-        return implode($colonnes = DAO::getAttributs(new $class));
+        return implode($colonnes = $class::getAttributes(new $class));
     }
 /**
  * Transforme le tableau de condition en un string implémentant les conditions
