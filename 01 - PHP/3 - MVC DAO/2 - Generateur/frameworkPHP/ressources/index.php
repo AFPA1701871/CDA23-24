@@ -10,10 +10,10 @@ function loadClass($class)
     require "./MODEL/".$class.".Class.php";
 }
 spl_autoload_register("loadClass");
-Parametre::init();
-DbConnect::init();
-$tabTables = recupTables();
+ProjectGen::init();
+
+$tabTables = ProjectGen::recupTables();
 foreach ($tabTables as $tables){
     foreach($tables as $table)
-        createManager($table);
+    ProjectGen::createManager($table);
 }

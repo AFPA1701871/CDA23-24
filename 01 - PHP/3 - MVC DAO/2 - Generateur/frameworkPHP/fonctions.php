@@ -1,6 +1,6 @@
 <?php
 
-class projectGen {
+class ProjectGen {
 
     private static $_projectDir;
 
@@ -61,10 +61,18 @@ class projectGen {
     
     public static function dirGen() 
     {
+        // access to project config json file
         $obj          = json_decode(file_get_contents("projet.json"));
         $projectName  = $obj->projectName;
         $pathProject  = $obj->pathProject;
+        // project source dir
         self::$_projectDir   = $pathProject."/".$projectName;
+        // database arguments
+        self::$_host = $obj     ->host;
+        self::$_dbname = $obj   ->dbname;
+        self::$_charset = $obj  ->charset;
+        self::$_user = $obj     ->user;
+        self::$_password = $obj ->password;
 
         // Create project path
         mkdir(self::$_projectDir, 0777); // 0777 = chmod tout les droits
@@ -144,6 +152,7 @@ class projectGen {
         return $tableau;
     }
     //**********************************Générateur Manager***************************************/
+#manager
     /**
      * Permet d'ouvrir la balise PHP et la Class
      *
@@ -257,19 +266,20 @@ class projectGen {
      * @param string $className
      * @return void
      */
-    function createManager(string $className)
+    public static function createManager(string $className)
     {
         $aff = '';
-        $aff .= startClassManager($className);
-        $aff .= createAdd($className);
-        $aff .= createUpdate($className);
-        $aff .= createDelete($className);
-        $aff .= createFindById($className);
-        $aff .= createGetList($className);
-        $aff .= endClassManager();
+        $aff .= self::startClassManager($className);
+        $aff .= self::createAdd($className);
+        $aff .= self::createUpdate($className);
+        $aff .= self::createDelete($className);
+        $aff .= self::createFindById($className);
+        $aff .= self::createGetList($className);
+        $aff .= self::endClassManager();
 
         return $aff;
     }
+#endmanager
     //********************************Fin Générateur Manager*************************************/
 
 }

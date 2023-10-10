@@ -203,7 +203,7 @@ public static function update($objet){
             $query->bindValue(":$row[$i]", $objet->$methode());
         }
     }
-    $query->execute();
+    return $query->execute();
 }
 
 
@@ -217,7 +217,7 @@ public static function update($objet){
         $query = $db->prepare("DELETE FROM ".get_class($objet)." WHERE ".$row[0]." = :".$row[0]);
         $methode = "get" . ucfirst($row[0]);
         $query->bindValue(":$row[0]", $objet->$methode());
-        $query->execute();
+        return $query->execute();
     }
 
 #endregion
