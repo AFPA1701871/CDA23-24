@@ -1,0 +1,10 @@
+{
+    "projectName"   : "TestProject",
+    "pathProject"   : "C:/Users",
+    
+    "host"      : "localhost",
+    "dbname"    : "dbname",
+    "charset"   : "utf8",
+    "user"      : "root",
+    "password"  : ""
+}

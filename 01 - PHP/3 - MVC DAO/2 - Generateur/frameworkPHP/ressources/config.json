@@ -1,0 +1,7 @@
+{
+    "host"      : "localhost",
+    "dbname"    : "data_base_name",
+    "charset"   : "utf8",
+    "user"      : "root",
+    "password"  : ""
+}
