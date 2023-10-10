@@ -9,7 +9,7 @@ class DAO
 		$colonnes = $class::getAttributes();
 		$requ = "INSERT INTO ". $class . "(";
 		$values = "";
-
+        // on commence à 1 pour ne pas renseigner l'id
 		for ($i = 1; $i < count($colonnes); $i++) {
 			$methode = "get" . ucfirst($colonnes[$i]);
 			if ($obj->$methode() !== null) {
@@ -17,11 +17,13 @@ class DAO
 				$values .= ":" . $colonnes[$i] . ",";
 			}
 		}
-		$requ = substr($requ, 0, strlen($requ) - 1);
-		$values = substr($values, 0, strlen($values) - 1);
+        // on enlève la dernière ,
+		$requ = substr($requ, 0, - 1);
+		$values = substr($values, 0,  - 1);
 		$requ .= ") VALUES (" . $values . ")";
 		$q = $db->prepare($requ);
 
+        //on fait les bind
 		for ($i = 1; $i < count($colonnes); $i++) {
 			$methode = "get" . ucfirst($colonnes[$i]);
 			if ($obj->$methode() !== null)
