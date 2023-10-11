@@ -1,0 +1,10 @@
+{
+    "INT":["int","number"],
+    "FLOAT":["float","number"],
+    "DOUBLE":["double","number"],
+    "VARCHAR":["string","text"],
+    "DATE":["DateTime","date"],
+    "DATETIME":["DateTime","datetime-local"],
+    "BOOLEAN":["bool","checkbox"],
+    "ENUM":["string",""]
+}
