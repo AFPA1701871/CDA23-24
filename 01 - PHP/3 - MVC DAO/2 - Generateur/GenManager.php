@@ -78,7 +78,7 @@ class GenManager
     {
         $aff = "static public function findById(\$id) \n";
         $aff .= "{ \n";
-        $aff .= '   return DAO::select("' . ucfirst($className) . '",' . ucfirst($className) . '::getAttributs(),["id' . ucfirst($className) . '"=> $id])[0];' . "\n";
+        $aff .= '   return DAO::select("' . ucfirst($className) . '",' . ucfirst($className) . '::getAttributes(),["id' . ucfirst($className) . '"=> $id])[0];' . "\n";
         $aff .= "} \n \n";
 
         return $aff;
@@ -94,7 +94,7 @@ class GenManager
     {
         $aff = "static public function getList(array \$nomColonnes=null,  array \$conditions = null, string \$orderBy = null, string \$limit = null, bool \$api = false, bool \$debug = false) \n";
         $aff .= "{ \n";
-        $aff .= "   \$nomColonnes = (\$nomColonnes == null) ?" . ucfirst($className) . "::getAttributs() : \$nomColonnes;" . " \n";
+        $aff .= "   \$nomColonnes = (\$nomColonnes == null) ?" . ucfirst($className) . "::getAttributes() : \$nomColonnes;" . " \n";
         $aff .= '   return DAO::select("' . ucfirst($className) . '"' . ", \$nomColonnes, \$conditions, \$orderBy, \$limit, \$api, \$debug);" . "\n";
         $aff .= "} \n \n";
 

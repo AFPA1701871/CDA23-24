@@ -13,7 +13,8 @@ class GenPoco {
     {
         $pocoStr  = self::generateAttributes($table,$colonnes);
         $pocoStr .= self::generateConstruct();
-        return $pocoStr .= self::generateToString($colonnes);
+         $pocoStr .= self::generateToString($colonnes);
+         return $pocoStr."}";
     }
 
     /**
@@ -35,7 +36,7 @@ class GenPoco {
         foreach ($colonnes as $key => $value) {
             $attr.= " private ". '$_' . $key. ";". "\n";
             $attr.= "\n" ;
-            $listeAttributs.=$key.", ";
+            $listeAttributs.="'".$key."', ";
             //getter
             $access.= "     public function get" . ucfirst($key) . "()\n";
             $access.= " {\n";
@@ -44,40 +45,34 @@ class GenPoco {
             $access.= "\n" ;
             //setter
             // Modifier pour utiliser le type.json
-            if (str_contains($va, 'id')){
+            if (str_contains($value, 'id')){
                 $type = "?int";
-            } else if (str_contains($key, 'date')){
+            } else if (str_contains($value, 'date')){
                 $type ="date";
             } else {
                 $type = "string";
             }
-            $access.= "     public function set" . ucfirst($key) . "(?" . $type . " " . '$' . $key . ")" . "\n";
+            $access.= "     public function set" . ucfirst($key) . "(?" . $type . " " . '$' . lcfirst($key) . ")" . "\n";
             $access.= " {" . "\n";
-            $access.= '     $this' . '->_' . $value . " = " . '$' . $value . ";" . "\n";
+            $access.= '     $this' . '->_' . $key . " = " . '$' . lcfirst($key) . ";" . "\n";
             $access.= " }" . "\n" ;
             $access.= "\n" ;
         }
         $return.= $attr;
-        $return.= " private static " . '$_attributes' . "[".substr($listeAttributs,0,-2)."];";
+        $return.= " private static " . '$_attributes' . "=[".substr($listeAttributs,0,-2)."];";
         
         $return.= "\n\n";
         //Accesseurs
         $return.= " /******************Accesseurs*******************/\n";
         $return.= "\n" ;
-
+        $return.= $access . "\n";
         
-            // dans ce cas :
-            // $key => int(0), int(1) etc
-            // $value => "nom de la colonne"
-            // Dans le cas du tableau "Id... => int" remplacer $value par $key
-            
-            
         // fonction get attributes
         $return.= "     public static function getAttributes()". "\n";
         $return.= " {". "\n";
         $return.= "     return self::" . '$_attributes' . ";" . "\n";
         $return.= " }". "\n" ;
-        $return.= " }". "\n";
+        // $return.= " }". "\n";
         //var_dump($return);
         return $return;
     }
@@ -125,47 +120,19 @@ class GenPoco {
          $aff .= ' *'."\n";
          $aff .= ' * @return string'."\n";
          $aff .= ' */'."\n";
-         $aff .= 'public function toString(){'."\n";
+         $aff .= 'public function __toString()'."\n";
          $aff .= '{'."\n";
          $aff .= '   return';
-         $tableauAff = [];
          foreach($tableauColonnes as $colonnes => $value)
          {
-             if($value == "array")
-             {
-                 $tableauAff[$colonnes] = ' "'.ucfirst($colonnes).' : [".';
-                 $tableauAff[$colonnes] .= "implode(";
-                 $tableauAff[$colonnes] .= '", ",$this->get'; 
-                 $tableauAff[$colonnes] .= ucfirst($colonnes);
-                 $tableauAff[$colonnes] .= '())."] . ';
-             }
-             else
-             {
-                 $tableauAff[$colonnes] = ' "'.ucfirst($colonnes).' : "';
-                 $tableauAff[$colonnes] .= ". \$this->get"; 
-                 $tableauAff[$colonnes] .= ucfirst($colonnes);
-                 $tableauAff[$colonnes] .= "() . ";
-             }
+                 $aff .= ' "'.ucfirst($colonnes).' : "';
+                 $aff .= ". \$this->get"; 
+                 $aff .= ucfirst($colonnes);
+                 $aff .= "() . ";
          }
-         $aff .= implode('", " .',$tableauAff);
          $aff .= '"\n";'."\n";
          $aff .= '}'."\n";
          return $aff;
      }
 }
 
-// public function toString()
-// {
-//     $properties = get_object_vars($this);
-//     $output = [];
-//     foreach ($properties as $name => $value) {
-//         $output[] = "$name : $value";
-//     }
-//     return implode($output);
-// }
-    
-
-//  touche pas c'est pour Theo 
-//  foreach(ProjectGen::recupBDD()as $nomTable =>$value){   
-//    self::createPoco($nomTable,$value);
-//  }

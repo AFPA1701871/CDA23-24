@@ -38,7 +38,7 @@ class DAO{
     *
     * @return [array] $liste => résultat de la requête revoie false si la requête s'est mal passé sinon renvoie un tableau.
     */
-    public static function select(string $table,?array $colonnes=null,?array $conditions=null,?array $orderBy=null,?string $limit ,?bool $debug=false) {
+    public static function select(string $table,?array $colonnes=null,?array $conditions=null,?array $orderBy=null,?string $limit=null ,?bool $debug=false) {
         //Pour prévenir les injection SQL : verif ;
         $verif = $table . json_encode($colonnes) . json_encode($conditions) . json_encode($orderBy) . $limit;
         if (!strpos($verif, ";")){

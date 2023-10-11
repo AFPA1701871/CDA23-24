@@ -159,7 +159,7 @@ class ProjectGen
             $managerStr = GenManager::createManager($tableList[$i]);
             $pocoStr = GenPoco::createPoco($tableList[$i], $tableAssoc);
             $listStr = GenList::createList($tableList[$i]);
-            $formStr = GenForm::createForm($tableAssoc);
+            // $formStr = GenForm::createForm($tableAssoc);
             // Create and fill manager class
             $managerFile = fopen($managerPath, "w") ?: var_dump("Can't open file: " . $managerPath);
             fwrite($managerFile, $managerStr) ?: var_dump("Can't write to file: " . $managerPath);
@@ -173,12 +173,12 @@ class ProjectGen
             fwrite($listFile, $listStr) ?: var_dump("Can't write to file: " . $listPath);
             fclose($listFile);
             // Create and fill data table form class
-            $formFile = fopen($formPath, "w") ?: var_dump("Can't open file: " . $formPath);
-            fwrite($formFile, $formStr) ?: var_dump("Can't write to file: " . $formPath);
-            fclose($formFile);
+            // $formFile = fopen($formPath, "w") ?: var_dump("Can't open file: " . $formPath);
+            // fwrite($formFile, $formStr) ?: var_dump("Can't write to file: " . $formPath);
+            // fclose($formFile);
         }
         // Create and fill config.json
-        $configPath = self::$_projectDir . "/projet.json";
+        $configPath = self::$_projectDir . "/config.json";
         $dataconfig = GenerateConfig::createConfigJSON(self::getDbData());
 
         $configFile = fopen($configPath, "w") ?: var_dump("Can't open file: " . $configPath);
