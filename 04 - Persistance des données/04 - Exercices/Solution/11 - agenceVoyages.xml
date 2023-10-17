@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<Database>
+   <Name>agenceVoyages</Name>
+   <Table>
+      <Name>Clients</Name>
+      <Column>
+         <Name>numero</Name>
+         <Type>INT</Type>
+      </Column>
+      <Column>
+         <Name>nom</Name>
+         <Type>VARCHAR(100) </Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <Column>
+         <Name>prenom</Name>
+         <Type>VARCHAR(100) </Type>
+      </Column>
+      <PK>
+         <Key>numero</Key>
+      </PK>
+   </Table>
+   <Table>
+      <Name>type</Name>
+      <Column>
+         <Name>idType</Name>
+         <Type>INT AUTO_INCREMENT</Type>
+      </Column>
+      <Column>
+         <Name>libelleType</Name>
+         <Type>VARCHAR(50) </Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <PK>
+         <Key>idType</Key>
+      </PK>
+   </Table>
+   <Table>
+      <Name>Prestations</Name>
+      <Column>
+         <Name>codePrestation</Name>
+         <Type>INT</Type>
+      </Column>
+      <Column>
+         <Name>niveauPrestation</Name>
+         <Type>INT</Type>
+      </Column>
+      <Column>
+         <Name>prixPublic</Name>
+         <Type>DECIMAL(15,2)  </Type>
+      </Column>
+      <Column>
+         <Name>photo</Name>
+         <Type>TEXT</Type>
+      </Column>
+      <Column>
+         <Name>intitul&#233;</Name>
+         <Type>VARCHAR(50) </Type>
+      </Column>
+      <Column>
+         <Name>description</Name>
+         <Type>TEXT</Type>
+      </Column>
+      <Column>
+         <Name>lieu</Name>
+         <Type>VARCHAR(200) </Type>
+      </Column>
+      <Column>
+         <Name>idType</Name>
+         <Type>INT AUTO_INCREMENT</Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <PK>
+         <Key>codePrestation</Key>
+      </PK>
+      <FK>
+         <Key>idType</Key>
+         <Reference>type(idType)</Reference>
+      </FK>
+   </Table>
+   <Table>
+      <Name>Achats</Name>
+      <Column>
+         <Name>codePrestation</Name>
+         <Type>INT</Type>
+      </Column>
+      <Column>
+         <Name>numero</Name>
+         <Type>INT</Type>
+      </Column>
+      <Column>
+         <Name>prix</Name>
+         <Type>DECIMAL(6,2)  </Type>
+         <Property>NOT NULL</Property>
+      </Column>
+      <PK>
+         <Key>codePrestation, numero</Key>
+      </PK>
+      <FK>
+         <Key>codePrestation</Key>
+         <Reference>Prestations(codePrestation)</Reference>
+      </FK>
+      <FK>
+         <Key>numero</Key>
+         <Reference>Clients(numero)</Reference>
+      </FK>
+   </Table>
+</Database>
