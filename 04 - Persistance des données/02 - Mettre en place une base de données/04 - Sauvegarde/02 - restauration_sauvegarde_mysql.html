@@ -1,0 +1,45 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title></title><link rel="stylesheet" href="/css/highlight/monokai-sublime.css"><link rel="stylesheet" href="/css/highlight/sunburst.css"><link rel="stylesheet" href="/css/markdown.css"><link rel="stylesheet" href="/css/markdown_foad.css"><link rel="stylesheet" href="/css/menu-markdown.css"><script src="/js/highlight.js"></script><script src="/js/jquery.js"></script></head><body class="markdown-body"><div class="markdown-body"><h1 id="sauvegarde-et-restauration-sous-mysql-mariadb">Sauvegarde et restauration sous MySql/MariaDb</h1>
+<h2 id="sauvegarde">Sauvegarde</h2>
+<ol>
+<li><p>Avant de commencer, il faut impérativement définir un mot de passe pour l&#39;utilisateur (root). Ouvrir <em>HeidiSQL &gt; Outils &gt; Gestionnaire utilisateur &gt; onglet Autorisations</em>. Cliquez sur l&#39;utilisateur <code>root</code> (à droite) et dans le formulaire saisir le mot de passe souhaité (mettez le même à tous) dans les deux champs puis cliquez sur <code>Enregistrer</code>. Répétez l&#39;opération pour tous les utilisateurs <code>root</code> affichés.</p>
+</li>
+<li><p>Créer un répertoire nommé <code>backup</code> sur le disque C (on aura donc <code>C:/Backup</code>).</p>
+</li>
+<li><p>Lancer l&#39;invite de commande Windows : touche <code>Windows</code> + <code>R</code> ou bien saisir <code>cmd</code> dans la zone de recherche de la barre des tâches (Cortana)</p>
+</li>
+<li><p>Se positionner dans le répertoire bin du répertoire d&#39;installation de MariaDB en tapant la commande : </p>
+<p> cd C:\Program Files\MariaDB 10.2\bin   </p>
+</li>
+</ol>
+<p>Le répertoire et la version peuvent varier, il faut indiquer le chemin du répertoire dans lequel se trouve le fichier exécutable <code>mysqldump.exe</code> </p>
+<ol>
+<li><p>Pour effectuer la sauvegarde (ou « dump »), saisir la commande :</p>
+<pre><code>  mysqldump --user=root --password=levotre --databases papyrus &gt; C:\Backup\backup_papyrus.sql
+</code></pre></li>
+<li><p>L&#39;option  --databases est suivie du nom de la base à sauvegarder</p>
+</li>
+<li>Après le chevron vers la droite (&gt;), on indique le chemin complet et le nom du fichier de sauvegarde</li>
+</ol>
+<blockquote>
+<p>Il existe de nombreuses options de sauvegarde, qui permettent d&#39;indiquer par exemple que l&#39;on souhaite sauvegarder uniquement la structure des tables ou les données, ajouter des instructions <code>IF EXISTS</code> etc.</p>
+</blockquote>
+<h2 id="restauration">Restauration</h2>
+<p>Pour restaurer, on va utiliser la commande <code>mysql</code> (et non plus <code>mysqldump</code>).</p>
+<ol>
+<li><p>Par précaution, on va renommer la base <code>papyrus</code> déjà créée; elle existera donc sous un autre nom. Dans HeidiSQL, clic droit sur le nom de la base papyrus (colonne de droite) &gt; Edition puis sai-sir le nouveau nom : papyrus_renamed, cliquez sur OK.</p>
+</li>
+<li><p>Répétez les opération 3 et 4 de la sauvegarde.   </p>
+</li>
+<li><p>Pour la restauration, on va utiliser la commande mysql (exécutable <code>mysql.exe</code> situé lui aussi dans <code>C:\Program Files\MariaDB 10.2\bin</code>) et non plus <code>mysqldump</code>.</p>
+</li>
+</ol>
+<p>Exécutez la commande suivante : </p>
+<pre><code>mysql --user=root --password=levotre papyrus &lt; C:\Backup\backup_papyrus.sql
+</code></pre><p>Explications : </p>
+<ul>
+<li>On se connecte avec l’utilisateur root et son mot de passe ;</li>
+<li>On indique ensuite le nom que prendra la base de données restaurée (qui pourra être celui d&#39;origine, mais des dans ce cas il pourra y avoir des erreurs ou pas selon que des instructions <code>DROP/CREATE…IF EXISTS</code> sont contenues dans le fichier de sauvegarde)</li>
+<li>Notez le chevron vers la gauche cette fois</li>
+<li>Enfin, on indique le chemin vers le fichier de sauvegarde</li>
+</ul>
+</div><div class="menu-markdown"><img src="/images/menu.png"></div></body></html><script>hljs.initHighlightingOnLoad();</script><script src="/js/menu-markdown.js"></script>
