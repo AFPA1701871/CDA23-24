@@ -1,0 +1,19 @@
+Ecrivez des requêtes SELECT (A chaquefois ,vous stockerez la requete dans un fichier texte» pour
+a. Affichez la totalité de la table « client ».
+b. Affichez les noms de tous les clients.
+c. Affichez les différentes dates de commandes sans répétition.
+d. Affichez les clients qui se prénomment « sophie ».
+e. Affichez les numéros des articles et leur quantite commandés par le client1.
+f. Affichez les noms des clients en majuscules-.
+g. Affichez les noms des clients avec la première lettre en majuscule.
+h. Affichez les noms des clients qui ont 5caractères.
+i. Affichez les noms des clients qui commencent par « t » ou qui ont un « l » en troisième position.
+j. Affichez le numéro de client, le numéro de commande, la date de commande et la date de paiement
+attendue des commandes (=date_cde+15jours).
+k. Affichez la date et l'heure actuelles.
+l. Affichez l'ancienneté des clients.
+m. Affichez la quantite maximale achetée par un client.
+n. Affichez la quantite totale achetée par le client1.
+o. Affichez la quantite moyenne achetée par le client 2.
+p. Affichez les clients classés par ordre alphabétique de leur nom.
+q. Affichez les articles classés selon leur prix décroissant. 
