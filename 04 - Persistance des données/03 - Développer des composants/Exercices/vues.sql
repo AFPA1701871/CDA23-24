@@ -14,6 +14,7 @@ SELECT
     e.sexeEtudiant,
     e.dateNaissanceEtudiant,
     e.HOBBY,
+    ep.idEpreuve,
     ep.libelleEpreuve,
     ep.idEnseignantEpreuve,
     ep.idMatiereEpreuve,
