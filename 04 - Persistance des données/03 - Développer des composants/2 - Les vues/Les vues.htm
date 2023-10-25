@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AFPA</title>
+	<link rel="icon" type="image/png" href="http://10.115.41.76/favicon.png" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="http://10.115.41.76/bootstrap/css/bootstrap.min.css">
+
+	<link rel="stylesheet" type="text/css" href="https://foad.amorce.org/css/full.css">
+	
+	<link rel="stylesheet" type="text/css" href="https://foad.amorce.org/css/highlight/line-number.css">
+
+	<script src="https://10.115.41.76/bootstrap/js/jquery.min.js"></script>
+	<script src="https://10.115.41.76/bootstrap/js/bootstrap.js"></script>
+
+	
+</head>
+<body>
+
+<div class="container ">
+
+<div class="markdown-body"><h1 id="les-vues">Les vues</h1>
+<h2 id="pr-sentation">Présentation</h2>
+<p>Une vue dans une base de données est une synthèse d&#39;une requête d&#39;interrogation de la base. On peut la voir comme une table virtuelle, définie par une requête. </p>
+<h3 id="avantages">Avantages</h3>
+<p>Les avantages des vues sont :</p>
+<ul>
+<li>éviter la (re)saisie fastidieuse de requêtes complexes : une vue sert à nommer une requête pour en faciliter la réutilisation;</li>
+<li>masquer le schéma de la base (noms des tables et colonnes, relations). En SQL, les privilèges sur une vue peuvent être définis différemment que ceux attribués aux tables utilisées par la vue.</li>
+<li>Modifier la structure d&#39;une table sans avoir à réécrire les requêtes dans votre application.</li>
+<li></li>
+</ul>
+<h2 id="fonctionnement">Fonctionnement</h2>
+<h3 id="cr-ation-d-une-vue">Création d&#39;une vue</h3>
+<pre><code>CREATE VIEW nom_de_la_vue
+AS
+SELECT * FROM nom_table
+WHERE...
+</code></pre><h3 id="utilisation-d-une-vue">Utilisation d&#39;une vue</h3>
+<p>Une vue s&#39;utilise de la même façon qu&#39;une table :</p>
+<pre><code>SELECT * FROM nom_de_la_vue
+</code></pre><blockquote>
+<p>Pour distinguer les vues des tables dans les <code>SELECT</code> une bonne pratique est de préfixer le nom des vues par <em>v_</em> lors de leur création.</p>
+</blockquote>
+
+<h2 id="requ-tes-utiles">Requêtes utiles</h2>
+<h3 id="afficher-la-d-finition-d-une-vue">Afficher la définition d&#39;une vue</h3>
+<pre><code>SHOW CREATE VIEW v_nomvue 
+</code></pre><h3 id="modifier-une-vue">Modifier une vue</h3>
+<p><em>Solution 1 :</em></p>
+<pre><code>ALTER VIEW v_nomvue 
+AS 
+[NOUVELLE REQUETE]
+</code></pre><p><em>Solution 2 :</em></p>
+<pre><code>CREATE OR REPLACE VIEW v_nomvue
+AS
+[NOUVELLE REQUETE]       
+</code></pre><h3 id="supprimer-une-vue">Supprimer une vue</h3>
+<pre><code>DROP VIEW v_nomvue 
+</code></pre><p>on peut spécifier l&#39;option <code>IF EXISTS</code> :</p>
+<pre><code>DROP VIEW IF EXISTS v_nomvue 
+</code></pre><h3 id="d-finir-des-privil-ges-sur-une-vue">Définir des privilèges sur une vue</h3>
+<pre><code>GRANT 
+CREATE VIEW, 
+SHOW VIEW 
+ON `nom_base`.* TO &#39;utilisateur&#39;@&#39;adresse_ip&#39;
+</code></pre><h3 id="lister-les-vues-existantes">Lister les vues existantes</h3>
+<pre><code>SELECT * FROM information_schema.views    
+</code></pre></div><script>hljs.initHighlightingOnLoad();</script></div> <!-- col-md-8 -->
+</div> <!-- row -->
+
+<div class="container">
+	<div class="col-xs-12">&nbsp;</div>
+	<div class="col-xs-12">&nbsp;</div>
+	<div class="col-xs-12">&nbsp;</div>
+
+	<div class="row">
+		<div class="col-xs-4 text-left">
+			<a href="http://www.europe-en-picardie.eu/">
+			<img class="logo" src="https://foad.amorce.org/images/logo_europe.png">
+			</a>
+		</div>
+		<div class="col-xs-4 text-center">
+			<a href="https://www.afpa.fr/">
+			<img class="logo"  src="https://foad.amorce.org/images/logo_afpa.png">
+			</a>
+		</div>
+		<div class="col-xs-4 text-right">
+			<a href="https://www.hautsdefrance.fr/">
+			<img class="logo"  src="https://foad.amorce.org/images/logo_region.png">
+			</a>
+		</div>
+	</div>
+
+</div> <!-- row -->
+
+	
+
+</div> <!-- container -->
+
+</body>
+</html>
+

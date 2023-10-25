@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>My- SQl Procédure stockées</title>
+   
+</head>
+<style>p {
+    margin: 1rem 0;
+    margin-bottom: 30px;
+}
+
+p:first-child {
+    margin-top: 0 !important;
+}
+
+ul {
+    list-style: disc;
+    padding-left: 19px;
+    margin-top: 1rem;
+    margin-bottom: 30px;
+}
+
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+h2,
+h3 {
+    font-weight: 700;
+    font-style: normal;
+    line-height: 1.2;
+    margin-bottom: 2px;
+}
+
+h2 {
+    font-size: 32px;
+    padding-top: 31px;
+}
+
+pre {
+    padding: 1rem;
+    margin: 1.875rem -15px;
+    font-family: Consolas, Monaco, Andale Mono, monospace;
+    background-color: #2d2d2d;
+    color: #d0d0d0;
+    max-width: 100vw;
+    overflow: auto;
+    display: flex;
+}
+
+.hljs {
+    display: block;
+    overflow-x: auto;
+    background: #2d2d2d;
+    color: #cccccc;
+    padding: 0.5em;
+}
+code {
+    background-color: #f5f3f3;
+    padding: 2px 4px;
+    color: #f2777a;
+}
+
+.hljs-keyword,
+.hljs-selector-tag {
+    color: #cc99cc;
+}
+
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+    color: #f99157;
+}
+
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+    color: #99cc99;
+}
+
+.hljs-keyword,
+.hljs-selector-tag {
+    color: #cc99cc;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Open Sans, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    line-height: 1.8;
+    color: #404852;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+}
+main{
+    width: 60vw;
+}
+h1{
+    text-align: center;
+}
+</style>
+
+<body>
+
+    <main>
+        <h1>Procédures stockées et Triggers</h1>
+        <div class="formatted"><p>Tout comme Oracle possède son langage PL/SQL et MS SQL Server son Transact-SQL, MySQL possède aussi un langage de programmation.</p>
+
+            <p>la programmation sous MySQL regroupe </p>
+            
+            <ul>
+            <li>les triggers</li>
+            <li>les procédures stockées</li>
+            <li>les fonctions</li>
+            </ul>
+            
+            <h2>Les Procédures Stockées</h2>
+            
+            <p>Une <strong>procédure stockée</strong> est un petit programme stocké dans la base de données et appelable à partir d'un client comme on peut le faire pour une requête. Une procédure est executée par le serveur de base de données.</p>
+            
+            <p>Tous les exemples de ce tuto ont été tapés en utilisant le client mySQL dans une console. Vous pouvez si vous le souhaitez, utiliser <strong>MySQL Workbench</strong> ou <strong>PhpMyadmin</strong> (sauf pour les triggers).</p>
+            
+            <p>Lorsque l'on crée une procédure, un des premiers soucis à contourner et tout bête : comment puis-je écrire une instruction qui se termine par un point-virgule alors que ma procédure contient un point-virgule à chaque ligne ?</p>
+            
+            <p>La réponse est : changeons le <strong>caractère délimiteur</strong> par un autre qui ne risque pas d'apparaitre dans nos intructions, prenons par exemple le pipe '|'</p>
+            
+            <pre class="language-sql"><code class="language-sql hljs">$: DELIMITER |
+            </code></pre>
+            
+            <p>Créons notre procédure avec la commande <strong>CREATE PROCEDURE name ([param[,param ...]])</strong><br>
+            On peut utiliser des paramètres <strong>IN, OUT</strong> ou <strong>INOUT</strong> c'est à dire en <strong>Entrée</strong>, en <strong>Sortie</strong> et à la fois en Entrée et en Sortie.<br>
+            Chaque paramètre est défini par son sens, son nom et son type.</p>
+            
+            <p>Voici un premier exemple d'une procedure qui met à jour les prix en leur appliquant un coefficient</p>
+            
+            <pre class="language-sql"><code class="language-sql hljs">$: <span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">PROCEDURE</span> maj_prix (<span class="hljs-keyword">IN</span> coef <span class="hljs-built_in">FLOAT</span>) 
+    <span class="hljs-keyword">BEGIN</span>
+            <span class="hljs-keyword">UPDATE</span> T1 <span class="hljs-keyword">SET</span> PRICE = PRICE * coef;
+        <span class="hljs-keyword">END</span>
+        |
+$:
+            </code></pre>
+            
+            <p>Notez le <strong>|</strong> final qui nous fait sortir de l'édition<br>
+            Chaque bloc d'instructions doit être encadré par <strong>BEGIN</strong> et <strong>END</strong> comme en <strong>Pascal</strong>, mais peut être ignoré dans le cas d'une seule instruction.</p>
+            
+            <p>Pour lancer notre procédure, on pense à remettre le délimiteur standard, c'est à dire le point-virgule.</p>
+            
+            <p>On lance une procédure par une commande  <strong>call</strong> en SQL</p>
+            
+            <pre class="language-sql"><code class="language-sql hljs">$: DELIMITER ;
+$: <span class="hljs-keyword">CALL</span> maj_prix(<span class="hljs-number">1.05</span>);
+            </code></pre>
+            
+          
+            <h3>Utilisation d'un paramètre de retour</h3>
+            
+            <p>Pour affecter un résultat SQL à une variable, on utilise le mot clé  <strong>INTO</strong></p>
+            
+            <pre class="language-sql"><code class="language-sql hljs">$: DELIMITER |
+$: <span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">PROCEDURE</span> get_count (<span class="hljs-keyword">OUT</span> nb <span class="hljs-built_in">INT</span>) 
+    <span class="hljs-keyword">BEGIN</span>
+        <span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">COUNT</span>(*) <span class="hljs-keyword">INTO</span> nb <span class="hljs-keyword">FROM</span> T1;
+    <span class="hljs-keyword">END</span>
+    |
+$: 
+            </code></pre>
+            
+            <p>Pour récupérer le résultat, on doit initialiser la variable qui va recevoir le résultat</p>
+            
+            <pre class="language-sql"><code class="language-sql hljs">$: <span class="hljs-keyword">SET</span> @n=<span class="hljs-number">0</span>;
+$: <span class="hljs-keyword">CALL</span> get_count(@n);
+$: <span class="hljs-keyword">SELECT</span> @n;
+            </code></pre>
+            
+            <p>Pour modifier une procédure, il faut la supprimer avec <strong>DROP</strong> puis la recréer, il n'existe pas de commande ALTER PROCEDURE</p>
+            
+            <pre class="language-sql"><code class="language-sql hljs">$: <span class="hljs-keyword">DROP</span> <span class="hljs-keyword">PROCEDURE</span> maproc;
+            </code></pre>
+            
+            <p>Pour afficher le code d'une procédure</p>
+            
+            <pre class="language-sql"><code class="language-sql hljs">$: <span class="hljs-keyword">SHOW</span> <span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">PROCEDURE</span> maproc;
+            </code></pre>
+            
+            <p>Pour voir les procédures existantes</p>
+            
+            <pre class="language-sql"><code class="language-sql hljs">$: <span class="hljs-keyword">SHOW</span> <span class="hljs-keyword">PROCEDURE</span> <span class="hljs-keyword">STATUS</span> <span class="hljs-keyword">LIKE</span> <span class="hljs-string">'%%'</span>
+            </code></pre>
+            
+            <h3>Déclaration des variables</h3>
+            
+            <p>Les variables sont déclarées par le mot clé <strong>DECLARE</strong> et les types sont les types SQL de MySQL</p>
+            
+            <p>On peut déclarer plusieurs variables du même type sur la même ligne</p>
+            
+            <p>On peut fixer une valeur d'initialisation.</p>
+            
+            <pre class="language-sql"><code class="language-sql hljs">$: <span class="hljs-keyword">DECLARE</span> myvar <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">10</span>);
+$: <span class="hljs-keyword">DECLARE</span> i, j <span class="hljs-built_in">INT</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-number">0</span>;
+            </code></pre>
+            
+            <h3>Les commentaires</h3>
+            
+            <pre class="language-sql"><code class="language-sql hljs"><span class="hljs-comment">/*
+    * une ligne
+    * deuxieme ligne
+*/</span>
+<span class="hljs-comment">-- une seule ligne (il y a un espace après les 2 tirets)</span>
+            </code></pre>
+            
+            <h3>Affectation directe de variables</h3>
+            
+            <p>On utilise le mot clé <strong>SET</strong></p>
+            
+            <pre class="language-sql"><code class="language-sql hljs"><span class="hljs-keyword">DECLARE</span> x <span class="hljs-built_in">INT</span>;
+<span class="hljs-keyword">DECLARE</span> nom <span class="hljs-built_in">VARCHAR</span>(<span class="hljs-number">50</span>);
+<span class="hljs-keyword">SET</span> x=<span class="hljs-number">10</span>;
+<span class="hljs-keyword">SET</span> nom=<span class="hljs-string">'toto'</span>;
+            </code></pre>
+            
+            <h3>Retouner des enregistrements</h3>
+            
+            <p>Si une procédure execute une requête SELECT, les enregistrements résultant sont retournés.</p>
+            
+            <pre class="language-sql"><code class="language-sql hljs">$: DELIMITER |
+$: <span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">PROCEDURE</span> mesenreg()
+<span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> matable;
+|
+            </code></pre>
+            
+            <p>Notez qu'il n'est pas possible d'appeler la procédure à partir d'une autre Requête</p>
+            
+            <pre class="language-markup"><code class="language-bash hljs">SELECT * FROM mesenreg();  // Ne fonctionne pas, il faut plutot faire une Vue
+            </code></pre>
+            
+            <h2>Les Fonctions</h2>
+            
+            <p>Une fonction comme une procédure s'exécute sur le serveur, mais une fonction retourne un résultat et peut être utilisée directement dans une requête SQL .</p>
+            
+            <h3>Création de fonction</h3>
+            
+            <p>On utilise la commande <strong>CREATE FUNCTION name (params) RETURNS returnType</strong></p>
+            
+            <pre class="language-sql"><code class="language-sql hljs">$: DELIMITER |
+$: <span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">FUNCTION</span> getlib (param_id <span class="hljs-built_in">INT</span>) <span class="hljs-keyword">RETURNS</span> <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">50</span>)
+<span class="hljs-keyword">BEGIN</span>
+    <span class="hljs-keyword">DECLARE</span> lib <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">50</span>);
+    <span class="hljs-keyword">SELECT</span> Libelle <span class="hljs-keyword">INTO</span> lib <span class="hljs-keyword">FROM</span> T1 <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">id</span>=param_id;
+    RETURN lib;
+<span class="hljs-keyword">END</span>;
+|
+            </code></pre>
+            
+            <p>en cas d'erreur 1418</p>
+            
+            <pre class="language-sql"><code class="language-sql hljs">$: <span class="hljs-keyword">set</span> <span class="hljs-keyword">global</span> log_bin_trust_routine_creators=<span class="hljs-number">1</span>;
+            </code></pre>
+            
+            <p>Utilisation d'une fonction stockée dans une requête SQL</p>
+            
+            <pre class="language-sql"><code class="language-sql hljs">$: <span class="hljs-keyword">SELECT</span> getlib(<span class="hljs-keyword">id</span>) <span class="hljs-keyword">FROM</span> T <span class="hljs-keyword">WHERE</span> ... 
+            </code></pre>
+            
+            <p>Pour la création de routines telles que procedures ou fonctions, il faut posséder le droit <strong>ALTER ROUTINE</strong><br>
+            Exemple de fonction qui arrondit un montant à 50 centimes prés</p>
+            
+            <pre class="language-sql"><code class="language-sql hljs">DELIMITER |
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">FUNCTION</span> arrondi50(v <span class="hljs-built_in">DECIMAL</span>(<span class="hljs-number">8</span>,<span class="hljs-number">2</span>)) <span class="hljs-keyword">RETURNS</span> <span class="hljs-built_in">DECIMAL</span>(<span class="hljs-number">8</span>,<span class="hljs-number">2</span>)
+<span class="hljs-keyword">RETURN</span> <span class="hljs-keyword">ROUND</span>((v * <span class="hljs-number">2</span>) + <span class="hljs-number">0.49999</span>)/<span class="hljs-number">2</span>;
+|
+DELIMITER ;
+            </code></pre>
+            
+            <h3>Conditions IF THEN ELSE</h3>
+            
+            <pre class="language-markup"><code class="language-bash hljs">IF var = 2 THEN
+                ...
+            ELSE
+                ...
+            ELSEIF
+                ...
+END IF;
+            </code></pre>
+            
+            <h3>Conditions CASE</h3>
+            
+            <p>Suivant la valeur de la variable qui suit CASE, le programme va traiter tel ou tel cas</p>
+            
+            <pre class="language-sql"><code class="language-sql hljs">CASE var
+            WHEN 1 THEN ...;
+            WHEN 2 THEN ...;
+            ELSE  ...;  // autres cas
+<span class="hljs-keyword">END</span> <span class="hljs-keyword">CASE</span>;
+            </code></pre>
+            
+            <h3>Boucles LOOP</h3>
+            
+            <pre class="language-sql"><code class="language-sql hljs">LOOP
+                ...
+<span class="hljs-keyword">END</span> <span class="hljs-keyword">LOOP</span>
+            </code></pre>
+            
+            <p>Si on souhaite sortir de la boucle on doit rajouter une étiquette. L'appel à <strong>LEAVE</strong> suivi de l'étiquette provoque la sortie de la boucle.</p>
+            
+            <pre class="language-sql"><code class="language-sql hljs">LOOP 
+                ...
+                IF myvar = 0 THEN LEAVE unlabel;
+<span class="hljs-keyword">END</span> <span class="hljs-keyword">LOOP</span> unlabel;
+            </code></pre>
+            
+            <h3>Boucles REPEAT UNTIL</h3>
+            
+            <pre class="language-sql"><code class="language-sql hljs">REPEAT 
+                ...
+UNTIL var = 5 <span class="hljs-keyword">END</span> <span class="hljs-keyword">REPEAT</span>;
+            </code></pre>
+            
+            <p>Si on veut recommencer l'itération</p>
+            
+            <pre class="language-sql"><code class="language-sql hljs">un_label: REPEAT
+    ...
+IF i = 3 THEN ITERATE un_label; <span class="hljs-keyword">END</span> <span class="hljs-keyword">IF</span>; 
+UNTIL i &lt; 100 <span class="hljs-keyword">END</span> <span class="hljs-keyword">REPEAT</span> un_label; 
+            </code></pre>
+            
+            <h3>Boucles WHILE</h3>
+            
+            <pre class="language-sql"><code class="language-sql hljs">WHILE i &lt; 100 <span class="hljs-keyword">DO</span>
+    ...
+<span class="hljs-keyword">END</span> <span class="hljs-keyword">WHILE</span>
+            </code></pre>
+            
+            <h3>Utilisation des curseurs (CURSOR)</h3>
+            
+            <p>Un <strong>CURSOR</strong>, c'est ce qui va nous permettre de parcourir un jeu d'enregistrements.<br>
+            On doit commencer par déclarer le curseur et l'associer à une requête de type SELECT, celle qui va fournir les enregistrements.<br>
+            Pour cela on doit le déclarer et lui donner un nom :</p>
+            
+            <pre class="language-sql"><code class="language-sql hljs"><span class="hljs-keyword">DECLARE</span> mycursor <span class="hljs-keyword">CURSOR</span> <span class="hljs-keyword">FOR</span> <span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">id</span>, nom <span class="hljs-keyword">FROM</span> matable; 
+            </code></pre>
+            
+            <p>Avant de l'exécuter, il faut déclarer des variables qui récupéreront les valeurs des champs</p>
+            
+            <pre class="language-sql"><code class="language-sql hljs"><span class="hljs-keyword">DECLARE</span> var_id <span class="hljs-built_in">INT</span>;
+<span class="hljs-keyword">DECLARE</span> var_nom <span class="hljs-built_in">VARCHAR</span>(<span class="hljs-number">50</span>);
+            </code></pre>
+            
+            <p>On doit ensuite ouvrir le curseur avec <strong>OPEN</strong> pour exécuter la requête.<br>
+            A chaque boucle on '<strong>FETCH</strong>' les valeurs dans les variables :</p>
+            
+            <pre class="language-sql"><code class="language-sql hljs">OPEN mycursor;
+            
+boucle: LOOP
+    FETCH mycursor INTO var_id, var_nom;
+        ...
+    IF done THEN
+        LEAVE boucle;
+    <span class="hljs-keyword">END</span> <span class="hljs-keyword">IF</span>;
+<span class="hljs-keyword">END</span> <span class="hljs-keyword">LOOP</span>;
+            </code></pre>
+            
+            <p>ensuite il faut fermer le curseur pour libérer les ressources</p>
+            
+            <pre class="language-markup"><code class="language-bash hljs">CLOSE mycursor;
+            </code></pre>
+            
+            <h2>Les Triggers</h2>
+            
+            <p>Les Triggers ou déclencheurs en français, sont des procédures attachées directementà un évênement d'une table, par exemple sur chaque insertion ou chaque suppression d'enregistrement.<br>
+            Un Trigger est donc rattaché à une table et à un évênement, mais on doit aussi indiquer si notre code sera déclenché avant ou après l'évênement.</p>
+            
+            <pre class="language-markup"><code class="language-bash hljs">CREATE TRIGGER &lt;nomtrigger&gt; &lt;action_time&gt; &lt;event&gt; ON &lt;table&gt;
+            </code></pre>
+            
+            <p>L' action_time précise si l'action a lieu avant (<strong>BEFORE</strong>) ou après (<strong>AFTER</strong>) l'évênement.<br>
+            L' event c'est l'action sur laquelle on se rattache : <strong>INSERT</strong>, <strong>DELETE</strong>, <strong>UPDATE</strong><br>
+            Prenons un exemple des messages et topics de forum : </p>
+            
+            <pre class="language-sql"><code class="language-sql hljs">$: <span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> topic (id_topic <span class="hljs-built_in">INT</span> <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span> AUTO_INCREMENT, description <span class="hljs-built_in">VARCHAR</span>(<span class="hljs-number">255</span>), message_at DATETIME);
+$: <span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> message (id_message <span class="hljs-built_in">INT</span> <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span> AUTO_INCREMENT, id_topic <span class="hljs-built_in">INT</span>, msg <span class="hljs-built_in">TEXT</span>, created_at DATETIME <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">CURRENT_TIMESTAMP</span>);
+            </code></pre>
+            
+            <p>Nous voulons qu'à chaque nouveau message, le champ <strong>message_at</strong> du topic soit mis à jour à la date courante.<br>
+            Dans le trigger, on accède aux données de l'enregistrement à insérer avec le préfixe <strong>NEW</strong></p>
+            
+            <pre class="language-sql"><code class="language-sql hljs"> DELIMITER |
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TRIGGER</span> insMsg <span class="hljs-keyword">BEFORE</span> <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">ON</span> message
+            
+    <span class="hljs-keyword">FOR</span> <span class="hljs-keyword">EACH</span> <span class="hljs-keyword">ROW</span>
+        <span class="hljs-keyword">BEGIN</span>
+            <span class="hljs-keyword">UPDATE</span> topic <span class="hljs-keyword">SET</span> message_at = <span class="hljs-keyword">NOW</span>() <span class="hljs-keyword">WHERE</span> id_topic = NEW.id_topic;
+        <span class="hljs-keyword">END</span>;
+    |
+            </code></pre>
+            
+            <p>Le <strong>FOR EACH ROW</strong> est obligatoire même si dans notre cas nous ne traitons qu'un seul enregistrement.<br>
+            Supposons que nous voulions supprimer un message, la date du topic doit être mise à jour avec :</p>
+            
+            <ul>
+            <li>Soit la date de l'avant-dernier message s'il existe</li>
+            <li>Soit null s'il n'existe pas</li>
+            </ul>
+            
+            <pre class="language-sql">
+            <code class="language-sql hljs">DELIMITER |
+            <span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TRIGGER</span> delMsg <span class="hljs-keyword">BEFORE</span> <span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">ON</span> message
+            <span class="hljs-keyword">FOR</span> <span class="hljs-keyword">EACH</span> <span class="hljs-keyword">ROW</span>
+            <span class="hljs-keyword">BEGIN</span>
+                <span class="hljs-keyword">DECLARE</span> date_topic DATETIME;
+                <span class="hljs-keyword">DECLARE</span> date_av_dernier DATETIME;
+                <span class="hljs-keyword">DECLARE</span> id_av_dernier <span class="hljs-built_in">INT</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-number">0</span>;
+                <span class="hljs-comment">/* on modifie le topic si seulement le message supprime est le dernier */</span>
+                <span class="hljs-keyword">SELECT</span> message_at <span class="hljs-keyword">INTO</span> date_topic <span class="hljs-keyword">FROM</span> topic <span class="hljs-keyword">WHERE</span> id_topic = OLD.id_topic;
+                IF date_topic &lt;= OLD.created_at THEN
+                    <span class="hljs-keyword">BEGIN</span>
+                        <span class="hljs-comment">/* on recherche l'avant dernier message du meme topic*/</span>
+                        <span class="hljs-keyword">SELECT</span> created_at, id_topic <span class="hljs-keyword">INTO</span> date_av_dernier, id_av_dernier
+                        <span class="hljs-keyword">FROM</span> message
+                        <span class="hljs-keyword">WHERE</span> id_message &lt;&gt; OLD.id_message <span class="hljs-keyword">AND</span> id_topic = OLD.id_topic <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> Created_at <span class="hljs-keyword">DESC</span> <span class="hljs-keyword">LIMIT</span> <span class="hljs-number">1</span>;
+            
+                        <span class="hljs-comment">/* on met a jour la date dans le topic ou NULL si pas de message anterieur */</span>
+                        IF id_av_dernier = 0 THEN
+                            <span class="hljs-keyword">UPDATE</span> topic <span class="hljs-keyword">SET</span> message_at = <span class="hljs-literal">NULL</span> <span class="hljs-keyword">WHERE</span> id_topic = OLD.id_topic;
+                        ELSE
+                            <span class="hljs-keyword">UPDATE</span> topic <span class="hljs-keyword">SET</span> message_at = date_av_dernier <span class="hljs-keyword">WHERE</span> id_topic = OLD.id_topic;
+                        <span class="hljs-keyword">END</span> <span class="hljs-keyword">IF</span>;
+                    <span class="hljs-keyword">END</span>;
+                <span class="hljs-keyword">END</span> <span class="hljs-keyword">IF</span>;
+            <span class="hljs-keyword">END</span>;
+            |
+            </code></pre>
+            
+            <p>Autre solution en plaçant le trigger après la suppression.<br>
+            Dans ce cas le message est déja supprimé, on recherche donc la date du dernier message s'il existe.</p>
+            
+            <pre class="language-sql"><code class="language-sql hljs">DELIMITER |
+            <span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TRIGGER</span> delMsg <span class="hljs-keyword">AFTER</span> <span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">ON</span> message
+            <span class="hljs-keyword">FOR</span> <span class="hljs-keyword">EACH</span> <span class="hljs-keyword">ROW</span>
+            <span class="hljs-keyword">BEGIN</span>
+                <span class="hljs-keyword">DECLARE</span> date_topic DATETIME;
+                <span class="hljs-keyword">DECLARE</span> date_dernier DATETIME;
+                <span class="hljs-keyword">DECLARE</span> id_dernier <span class="hljs-built_in">INT</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-number">0</span>;
+            
+                <span class="hljs-comment">/* on modifie le topic si seulement le message supprime etait le dernier */</span>
+                <span class="hljs-keyword">SELECT</span> message_at <span class="hljs-keyword">INTO</span> date_topic <span class="hljs-keyword">FROM</span> topic <span class="hljs-keyword">WHERE</span> id_topic = OLD.id_topic;
+                IF date_topic &lt;= OLD.created_at THEN
+                    <span class="hljs-keyword">BEGIN</span>
+                        <span class="hljs-comment">/* on recherche le dernier message existant du meme topic*/</span>
+                        <span class="hljs-keyword">SELECT</span> created_at, id_topic <span class="hljs-keyword">INTO</span> date_dernier, id_dernier
+                        <span class="hljs-keyword">FROM</span> message
+                        <span class="hljs-keyword">WHERE</span> id_topic = OLD.id_topic <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> Created_at <span class="hljs-keyword">DESC</span> <span class="hljs-keyword">LIMIT</span> <span class="hljs-number">1</span>;
+            
+                        <span class="hljs-comment">/* on met a jour la date dans le topic ou NULL si pas de message anterieur */</span>
+                        IF id_dernier = 0 THEN
+                            <span class="hljs-keyword">UPDATE</span> topic <span class="hljs-keyword">SET</span> message_at = <span class="hljs-literal">NULL</span> <span class="hljs-keyword">WHERE</span> id_topic = OLD.id_topic;
+                        ELSE
+                            <span class="hljs-keyword">UPDATE</span> topic <span class="hljs-keyword">SET</span> message_at = date_av_dernier <span class="hljs-keyword">WHERE</span> id_topic = OLD.id_topic;
+                        <span class="hljs-keyword">END</span> <span class="hljs-keyword">IF</span>;
+                    <span class="hljs-keyword">END</span>;
+                <span class="hljs-keyword">END</span> <span class="hljs-keyword">IF</span>;
+            <span class="hljs-keyword">END</span>;
+            |
+            </code></pre>
+            
+            <h3>Utilisation de trigger pour gérer un compteur de messages</h3>
+            
+            <p>On suppose que la table topic contient le nombre de messages<br>
+            Pour cela on rajoute un champ nb_messages initialisé à zéro.</p>
+            
+            <pre class="language-sql"><code class="language-sql hljs">$: <span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> topic (id_topic <span class="hljs-built_in">INT</span> <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span> AUTO_INCREMENT, description <span class="hljs-built_in">VARCHAR</span>(<span class="hljs-number">255</span>), message_at DATETIME, nb_messages <span class="hljs-built_in">INT</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-string">'0'</span>);
+            </code></pre>
+            
+            <p>On crée un trigger sur l'ajout de message et un autre sur la suppression</p>
+            
+            <pre class="language-sql"><code class="language-sql hljs"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TRIGGER</span> cnt_add_msg <span class="hljs-keyword">AFTER</span> <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">ON</span> message
+            <span class="hljs-keyword">FOR</span> <span class="hljs-keyword">EACH</span> <span class="hljs-keyword">ROW</span>    
+                <span class="hljs-keyword">UPDATE</span> topic <span class="hljs-keyword">SET</span> nb_messages = nb_messages + <span class="hljs-number">1</span> <span class="hljs-keyword">WHERE</span> id_topic = NEW.id_topic;
+            <span class="hljs-keyword">END</span>;
+            </code></pre>
+            
+            <p>On crée un trigger sur la suppression de message</p>
+            
+            <pre class="language-sql"><code class="language-sql hljs"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TRIGGER</span> cnt_del_msg <span class="hljs-keyword">AFTER</span> <span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">ON</span> message
+            <span class="hljs-keyword">FOR</span> <span class="hljs-keyword">EACH</span> <span class="hljs-keyword">ROW</span>    
+                <span class="hljs-keyword">UPDATE</span> topic <span class="hljs-keyword">SET</span> nb_messages = nb_messages - <span class="hljs-number">1</span> <span class="hljs-keyword">WHERE</span> id_topic = OLD.id_topic;
+            <span class="hljs-keyword">END</span>;
+            </code></pre>
+            
+            <h3>Comportement avec les Auto-increment</h3>
+            
+            <p>Supposons que lorsque l'on crée un topic, on crée automatiquement un premier message qui reprend la description du topic</p>
+            
+            <pre class="language-sql"><code class="language-sql hljs">DELIMITER |
+            <span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TRIGGER</span> instopic <span class="hljs-keyword">AFTER</span> <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">ON</span> topic
+            <span class="hljs-keyword">FOR</span> <span class="hljs-keyword">EACH</span> <span class="hljs-keyword">ROW</span>
+                <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> message (id_topic,  msg) <span class="hljs-keyword">VALUES</span> (NEW.id_topic, NEW.description);
+            |   
+            </code></pre>
+            
+            <p>Que nous donne le <strong>lastInsertId</strong>, celui du message ou celui du topic ?<br>
+            Réponse : celui du topic</p>
+            
+            <pre class="language-php"><code class="language-php hljs">$pdo-&gt;exec(<span class="hljs-string">"INSERT INTO topic (description) VALUES (\"La vie des bêtes\");"</span>);
+            <span class="hljs-keyword">echo</span> $pdo-&gt;lastInsertId();
+            </code></pre>
+            
+            <h3>Suppression en cascade</h3>
+            
+            <p>Lorsque l'on crée une liaison entre deux tables, on a la possiblité de définir une <strong>suppession en cascade</strong><br>
+            Cela signifie que si on supprime un topic, tous ses messages sont supprimés dans la foulée (sans avoir besoin de trigger).<br>
+            Le problème c'est que la suppression dans la table mère désactive le trigger DELETE de la table fille !!!<br>
+            Il faut choisir l'un ou l'autre.</p>
+            
+            <h3>Quelques commandes utiles</h3>
+            
+            <p><strong>Voir les triggers en place</strong></p>
+            
+            <pre class="language-sql"><code class="language-sql hljs">$: <span class="hljs-keyword">SHOW</span> <span class="hljs-keyword">TRIGGERS</span> <span class="hljs-keyword">LIKE</span> <span class="hljs-string">'%'</span>;
+            </code></pre>
+            
+            <p>Avec <strong>MySQL Workbench</strong><br>
+            On a la possibilité d'éditer un trigger existant.<br>
+            Dans l'explorateur d'objets, faire un clic doit sur le nom de la table puis 'alter table', ensuite sélectionner l'onglet Trigger.<br>
+            Le trigger sera automatiquement Droppé s'il existe puis recréé.</p>
+            
+            
+                  </div>
+    </main>
+</body>
+
+</html>
