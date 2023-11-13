@@ -1,0 +1,10 @@
+nom 1  info : 0
+nom 2  info : 1
+nom 3  info : 2
+nom 4  info : 3
+nom 5  info : 4
+nom 6  info : 5
+nom 7  info : 6
+nom 8  info : 7
+nom 9  info : 8
+nom 10  info : 9
