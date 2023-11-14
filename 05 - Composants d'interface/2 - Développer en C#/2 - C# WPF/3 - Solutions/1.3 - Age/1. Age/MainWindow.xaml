@@ -1,0 +1,49 @@
+﻿<Window x:Class="_1.Age.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_1.Age"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Background="#FFC1C1C1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Quel est ton nom ?" Grid.Column="1" Grid.Row="1" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" FontSize="16"/>
+        <TextBox x:Name="tb" Grid.Column="3" Grid.Row="1" TextWrapping="Wrap" Text="Didier" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" Grid.ColumnSpan="3" FontSize="16" >
+            <TextBox.Effect>
+                <DropShadowEffect RenderingBias="Quality" ShadowDepth="-2"/>
+            </TextBox.Effect>
+        </TextBox>
+        <Label Content="Quelle est ta date de naissance ?" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" FontSize="16"/>
+        <Viewbox Grid.Column="1" Grid.Row="4" Grid.RowSpan="5" Grid.ColumnSpan="3" HorizontalAlignment="Left">
+            <Calendar Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="3" Grid.RowSpan="5" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch"/>
+        </Viewbox>
+        <Button x:Name="btnOK" Content="_Ok" Grid.Column="5" Grid.Row="5" FontSize="16" >
+            <Button.Effect>
+                <DropShadowEffect RenderingBias="Quality" BlurRadius="10" ShadowDepth="1"/>
+            </Button.Effect>
+        </Button>
+        <Button Content="_Quitter" Grid.Column="5" Grid.Row="7" FontSize="16"/>
+        <!--Oui, je galère pour faire une shadow box sur ma textbox.-->
+    </Grid>
+</Window>

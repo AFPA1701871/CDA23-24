@@ -1,0 +1,66 @@
+﻿<Window x:Class="GestionProduits.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GestionProduits"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Background="{DynamicResource fond}" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid x:Name="gridMenu" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Background="{DynamicResource degradeBoutton}" x:Name="btnAjouter" Content="Ajouter" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Margin="0,0,2,0">
+            </Button>
+            <Button x:Name="btnModifier" Content="Modifier" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Grid.Column="1" Margin="2,0,2,0" Background="{DynamicResource degradeBoutton}"/>
+            <Button x:Name="btnSupprimer" Content="Supprimer" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Grid.Column="2" Margin="2,0,2,0" Background="{DynamicResource degradeBoutton}"/>
+            <Button x:Name="btnDuppliquer" Content="Duppliquer" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Grid.Column="3" Margin="2,0,0,0" Background="{DynamicResource degradeBoutton}"/>
+            <Button x:Name="btnVider" Content="Vider" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Grid.Column="4" Margin="2,0,0,0" Background="{DynamicResource degradeBoutton}"/>
+
+        </Grid>
+        <DataGrid x:Name="listeProduits" Grid.Row="2" Grid.Column="1" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn Header="IdProduit" />
+                <DataGridCheckBoxColumn Header="LibelleProduit" Width="300"/>
+                <DataGridCheckBoxColumn Header="Catégories" MinWidth="120"/>
+                <DataGridCheckBoxColumn Header="Rayons" MinWidth="120"/>
+            </DataGrid.Columns>
+            <DataGrid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                    <GradientStop Color="#FFC4C4C4" Offset="0.147"/>
+                </LinearGradientBrush>
+            </DataGrid.Background>
+
+        </DataGrid>
+        <Grid x:Name="gridNavigation" Grid.Column="1" Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="5*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="btnCategories" Content="Liste des catégories" Background="{DynamicResource degradeBoutton}" />
+            <Button x:Name="btnRayons" Content="Liste des rayons" Grid.Column="2" Background="{DynamicResource degradeBoutton}" />
+        </Grid>
+       
+    </Grid>
+</Window>

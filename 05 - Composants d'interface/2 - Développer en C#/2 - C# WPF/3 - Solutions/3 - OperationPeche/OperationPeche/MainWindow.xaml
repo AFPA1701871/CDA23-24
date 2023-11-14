@@ -1,0 +1,288 @@
+﻿<Window x:Class="OperationPeche.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OperationPeche"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="1200" Width="1200" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="80*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Opération de pêche" Grid.Row="1" FontWeight="Bold" FontSize="18" />
+        <Grid Grid.Row="2" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <GroupBox Grid.Column="1" Header="Navire" >
+                <StackPanel >
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Immatriculation :"  Grid.Column="0" HorizontalAlignment="Right"/>
+                        <TextBox HorizontalAlignment="Left" Grid.Column="1" Text="639451" />
+                    </Grid>
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Nom :"  Grid.Column="0" HorizontalAlignment="Right"/>
+                        <TextBox HorizontalAlignment="Left" Grid.Column="1" Text="PHILCATHAN" />
+                    </Grid>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Grid.Column="3" Header="Marée" >
+                <StackPanel >
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Départ :"  Grid.Column="0" HorizontalAlignment="Right"/>
+                        <TextBox HorizontalAlignment="Left" Grid.Column="1" Text="22/01/2021 - UCH - Granville" />
+                    </Grid>
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Retour :"  Grid.Column="0" HorizontalAlignment="Right"/>
+                        <TextBox HorizontalAlignment="Left" Grid.Column="1" Text="23/01/2021 - UCH - Granville" />
+                    </Grid>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Grid.Column="5" Header="Programme d'observation" >
+                <StackPanel >
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Programme :"  Grid.Column="0"  HorizontalAlignment="Right" Foreground="{DynamicResource labelRouge}"/>
+                        <TextBox HorizontalAlignment="Left" Grid.Column="1" Text="SIH-OBSMER" />
+                    </Grid>
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Stratégie :"  Grid.Column="0" HorizontalAlignment="Right"/>
+                        <TextBox HorizontalAlignment="Left" Grid.Column="1" Text="OBSMER démar" />
+                    </Grid>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Grid.Column="7" Header="Saisisseur" >
+                <StackPanel >
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Opérateur de saisie :"  Grid.Column="0" HorizontalAlignment="Right"/>
+                        <TextBox HorizontalAlignment="Left" Grid.Column="1" Text="TETARD Xavier" />
+                    </Grid>
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Dernière modification :"  Grid.Column="0" HorizontalAlignment="Right"/>
+                        <TextBox  Grid.Column="1" Text="25/11/2021" />
+                    </Grid>
+                </StackPanel>
+            </GroupBox>
+
+        </Grid>
+        <TabControl Grid.Row="4" Margin="10,0,10,0" >
+            <TabItem  Header="Opération">
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <GroupBox Header="Début de l'opération (Filage)" Grid.Column="0" Grid.Row="0">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="10*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="10*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="10*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="10*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10*"/>
+                                    <ColumnDefinition Width="10*"/>
+                                    <ColumnDefinition Width="10*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="3" Grid.Column="0" Content="Date et Heure:" Foreground="{DynamicResource labelRouge}"></Label>
+                                <ComboBox Grid.Row="3" Grid.Column="1" SelectedIndex="0">
+                                    <ComboBoxItem Content="22/01/2021"/>
+                                </ComboBox>
+                                <ComboBox Grid.Row="3" Grid.Column="2" SelectedIndex="0">
+                                    <ComboBoxItem Content="18:30"/>
+                                </ComboBox>
+                                <Label Grid.Row="5" Grid.Column="0" Content="Latitude:" Foreground="{DynamicResource labelRouge}"></Label>
+                                <TextBox Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Text="+49 14.100"></TextBox>
+
+                                <Button Grid.Row="5" Grid.Column="3"   Background="{DynamicResource question}" />
+
+                                <Button Grid.Row="5" Grid.Column="4" Background="{DynamicResource fleche}"/>
+                                <Label Grid.Row="7" Grid.Column="0" Content="Longitude:" Foreground="{DynamicResource labelRouge}"></Label>
+                                <TextBox Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Text="-1 48 320"></TextBox>
+
+                                <Button Grid.Row="7" Grid.Column="3" Background="{DynamicResource question}" />
+
+                                <Button Grid.Row="7" Grid.Column="4" Background="{DynamicResource fleche}" />
+
+                            </Grid>
+
+                        </GroupBox >
+                        <GroupBox Header="Fin de l'opération (Virage)" Grid.Column="1" Grid.Row="0">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="10*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="10*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="10*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="10*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10*"/>
+                                    <ColumnDefinition Width="10*"/>
+                                    <ColumnDefinition Width="10*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="1" Grid.Column="0" Content="Durée (h):" Foreground="{DynamicResource labelRouge}"></Label>
+                                <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="2:00"></TextBox>
+
+                                <Label Grid.Row="3" Grid.Column="0" Content="Date et Heure:" Foreground="{DynamicResource labelRouge}"></Label>
+                                <ComboBox Grid.Row="3" Grid.Column="1" SelectedIndex="0">
+                                    <ComboBoxItem Content="22/01/2021"/>
+                                </ComboBox>
+                                <ComboBox Grid.Row="3" Grid.Column="2" SelectedIndex="0">
+                                    <ComboBoxItem Content="18:30"/>
+                                </ComboBox>
+                                <Label Grid.Row="5" Grid.Column="0" Content="Latitude:" Foreground="{DynamicResource labelRouge}"></Label>
+                                <TextBox Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Text="+49 14.100"></TextBox>
+
+                                <Button Grid.Row="5" Grid.Column="3" Background="{DynamicResource question}" />
+
+                                <Label Grid.Row="7" Grid.Column="0" Content="Longitude:" Foreground="{DynamicResource labelRouge}"></Label>
+                                <TextBox Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Text="-1 48 320"></TextBox>
+
+                                <Button Grid.Row="7" Grid.Column="3"  Background="{StaticResource question}" />
+
+
+                            </Grid>
+                        </GroupBox >
+                    </Grid>
+                    <Label Background="{DynamicResource TitreDegrade}" Content="Zone d'activité : 27E8" Grid.Row="1" />
+                    <Label Background="{DynamicResource TitreDegrade}" Content="Autres caractéristiques de l'opération" Grid.Row="2"/>
+                    <Grid Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="20*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="1">
+
+                            <Button Background="{StaticResource plus}"  MinHeight="20"  />
+                            <Button Background="{StaticResource moins}"  MinHeight="20"  />
+                        </StackPanel>
+
+
+                        <DataGrid Name="Caracteristiques"  Grid.Column="3" AutoGenerateColumns="False">
+                            <DataGrid.Columns>
+                                <DataGridCheckBoxColumn />
+                                <DataGridTextColumn Header="Caratéristique" Binding="{Binding Caracteristique}"/>
+                                <DataGridTextColumn Header="Valeur" Binding="{Binding Valeur}" />
+                                <DataGridTextColumn Header="Unité" Binding="{Binding Support}"/>
+                                <DataGridTextColumn Header="Support" Binding="{Binding Support}"/>
+                                <DataGridTextColumn Header="Fraction" Binding="{Binding Fraction}"/>
+                                <DataGridTextColumn Header="Méthode" Binding="{Binding Methode}"/>
+                            </DataGrid.Columns>
+
+                        </DataGrid>
+                    </Grid>
+                    <Label Background="{DynamicResource TitreDegrade}" Content="Navire associé" Grid.Row="4"/>
+                    <Grid Grid.Row="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="5*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="5*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Orientation="Horizontal" Grid.Column="1">
+                            <Button Background="{StaticResource plus}" Grid.Column="1" MinWidth="20" Margin="0,0,10,0"/>
+                            <Button Background="{StaticResource moins}" Grid.Column="3"  MinWidth="20"/>
+                        </StackPanel>
+                        <Label Grid.Column="1" Grid.Row="2" HorizontalContentAlignment="Right" Content="Immatriculation : " />
+                        <TextBox Grid.Column="2" Grid.Row="2" />
+                        <Label Grid.Column="3" Grid.Row="2" HorizontalContentAlignment="Right" Content="Nom : " />
+                        <TextBox Grid.Column="4" Grid.Row="2" />
+                        <Label Grid.Column="1" Grid.Row="3" HorizontalContentAlignment="Right" Content="Quartier d'immatriculation : " />
+                        <TextBox Grid.Column="2" Grid.Row="3" />
+                        <Label Grid.Column="3" Grid.Row="3" HorizontalContentAlignment="Right" Content="Longueur hors tout(m) : " />
+                        <TextBox Grid.Column="4" Grid.Row="3" />
+                        <Label Grid.Column="0" Grid.Row="4" HorizontalContentAlignment="Right" Content="Capture remontée sur le navire de l'observateur? : "  Grid.ColumnSpan="2"/>
+                        <ComboBox Grid.Column="2" Grid.Row="4" />
+                        <Label Grid.Column="0" Grid.Row="5" HorizontalContentAlignment="Right" Content="Commentaire : " />
+                        <TextBlock Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="5" Background="#FFD6D1D1"  />
+                        <TextBlock Text="TextBlock" TextWrapping="Wrap"/>
+
+                    </Grid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
