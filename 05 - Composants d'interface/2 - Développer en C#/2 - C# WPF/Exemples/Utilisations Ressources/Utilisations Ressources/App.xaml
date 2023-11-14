@@ -1,23 +1,22 @@
-﻿<Application x:Class="Utilisation_Ressources.App"
+﻿<Application x:Class="Utilisations_Ressources.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-           xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
-               xmlns:local="clr-namespace:Utilisation_Ressources"
+             xmlns:local="clr-namespace:Utilisations_Ressources" xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+        <BitmapImage x:Key="im" UriSource="Images/croissant1.jpg"/>
+        <LinearGradientBrush x:Key="VertFondFenetre" EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FFC7EEC7" Offset="0"/>
+            <GradientStop Color="#FFEFF1EF" Offset="1"/>
+        </LinearGradientBrush>
+
         <LinearGradientBrush x:Key="VertButton" EndPoint="0,1" StartPoint="0,0">
             <GradientStop Color="#FFBDF5B5" Offset="0"/>
             <GradientStop Color="#FF447E3A" Offset="1"/>
         </LinearGradientBrush>
         <SolidColorBrush x:Key="VertContour" Color="#FF447E3A"/>
         <SolidColorBrush x:Key="VertCoche" Color="#FFC5F3AB"/>
-        <LinearGradientBrush x:Key="ButtonNormalBackground" EndPoint="0,1" StartPoint="0,0">
-            <GradientStop Color="#F3F3F3" Offset="0"/>
-            <GradientStop Color="#EBEBEB" Offset="0.5"/>
-            <GradientStop Color="#DDDDDD" Offset="0.5"/>
-            <GradientStop Color="#CDCDCD" Offset="1"/>
-        </LinearGradientBrush>
-        <SolidColorBrush x:Key="ButtonNormalBorder" Color="#FF707070"/>
+        <SolidColorBrush x:Key="RougeCroix" Color="#FFFB150A"/>
         <Style x:Key="ButtonFocusVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>
@@ -27,6 +26,19 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <LinearGradientBrush x:Key="ButtonNormalBackground" EndPoint="0,1" StartPoint="0,0">
+            <GradientStop Color="#F3F3F3" Offset="0"/>
+            <GradientStop Color="#EBEBEB" Offset="0.5"/>
+            <GradientStop Color="#DDDDDD" Offset="0.5"/>
+            <GradientStop Color="#CDCDCD" Offset="1"/>
+        </LinearGradientBrush>
+        <SolidColorBrush x:Key="ButtonNormalBorder" Color="#FF707070"/>
+        
+        
+        <LinearGradientBrush x:Key="GridBackground1" EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="Black"/>
+            <GradientStop Color="#FFE64646" Offset="1"/>
+        </LinearGradientBrush>
         <Style x:Key="ButtonStyleValider" TargetType="{x:Type Button}">
             <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}"/>
             <Setter Property="Background" Value="{StaticResource ButtonNormalBackground}"/>
@@ -65,5 +77,6 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
     </Application.Resources>
 </Application>

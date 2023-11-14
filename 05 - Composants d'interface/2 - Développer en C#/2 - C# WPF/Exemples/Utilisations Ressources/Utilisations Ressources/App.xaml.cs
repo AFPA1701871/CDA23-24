@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Utilisation_Ressources
+namespace Utilisations_Ressources
 {
     /// <summary>
     /// Interaction logic for App.xaml
