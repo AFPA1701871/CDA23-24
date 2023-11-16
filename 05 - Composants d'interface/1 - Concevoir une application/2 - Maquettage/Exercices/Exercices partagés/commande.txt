@@ -1,0 +1,27 @@
+Général :
+
+- Application de Gestion de commande :
+
+- Permets la vérification d'une commande pour vérifier son État : ( En cours, Prête a l'envoi, Envoyée, Envoyée et Reçue )
+
+- Une interface où l'on peut accéder à une liste de commandes qui contient un Numéro (10 Chiffres), Nom et prénom de celui qui a commandé 
+
+Ses infos et le détail de sa commande apparaîtra en dessous au clic sous forme de liste ( au cas où sa commande contient plusieurs items), 
+Date de commande, l'état de la commande et si elle existe une date de réception.
+
+
+( Aucune couleur imposée )
+
+
+Fonctionnalité / Outils :
+
+- Possibilité de filtrer par Nom / Prénom / Date / État / Date de commande
+
+- Possibilité de Modifier les données (via l'interface où apparaît le détail)
+- Aucune Possibilité d'ajouter ou de supprimer 
+
+- Possibilité de Sauvegarder ( en cas de modifications )
+
+- Possibilité de créer un PDF de Liste de Commande Affichée
+
+- Permets de sauvegarder une copie des données visibles afin de pouvoir utilisé les données sauvegardées ( sous format de données (ou autres))

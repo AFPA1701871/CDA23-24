@@ -1,0 +1,44 @@
+Maquetter une interface à partir d’un descriptif des données à présenter.
+
+Il s’agit d’une application de gestion de location de véhicule.
+
+La page demandée affichera une liste de véhicule (lorsque l’on
+sélectionnera une ligne de la liste, le détail apparaitra en dessous).
+
+Plusieurs actions seront possibles comme l’ajout d’une nouvelle ligne,
+la modification, la sauvegarde, la suppression, l’impression.
+
+La liste comprendra les données suivantes :
+- type de véhicule (auto/moto)
+- Marque 
+- Couleur 
+- Motorisation (Essence/Diesel/Hybride/Électrique)
+- Plaque d'immatriculation
+- Puissance fiscale
+- Date dernière révision
+- Nb de kilomètre actuel
+
+Le détail sera composé de plusieurs parties :
+
+CONTRAT :
+- Code du contrat
+- Date du //
+- Identité du client
+- Âge du //
+- Permis de conduire du //	
+
+ESTIMATIONS : 
+- Nb de kilomètres 
+- Durée de location
+- Montant de la //
+
+RÉALITÉ: 
+
+Les informations saisies en réalité seront reprises et pourront être
+modifiées.
+
+- Nb de kilomètres
+- Durée de location
+- Montant de la //
+- Observations éventuelles
+- Date de mise à jour
