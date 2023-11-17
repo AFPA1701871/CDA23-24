@@ -24,5 +24,17 @@ namespace Calculatrice
         {
             InitializeComponent();
         }
+
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            //Faire apparaitre les tailles dans la sortie
+            ((Window)sender).ActualHeight.Dump();
+            ((Window)sender).ActualWidth.Dump();
+
+            ((Window)sender).Height=4/3* ((Window)sender).ActualWidth; // garder les proportions
+
+
+
+        }
     }
 }
