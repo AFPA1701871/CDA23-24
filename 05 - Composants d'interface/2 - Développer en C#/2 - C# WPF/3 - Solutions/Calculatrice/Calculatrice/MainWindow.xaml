@@ -1,0 +1,63 @@
+﻿<Window x:Class="Calculatrice.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Calculatrice"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="450" MinWidth="200" MinHeight="200" ResizeMode="CanResizeWithGrip" SizeChanged="Window_SizeChanged" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="lblAfficheur" Content=""  Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="7" Background="#FFB7ADAD"/>
+
+        <Button x:Name="btn1" Content="1" Grid.Row="3" Grid.Column="1" Click="Btn_Num_Click"/>
+        <Button x:Name="btn2" Content="2" Grid.Row="3" Grid.Column="3" Click="Btn_Num_Click"/>
+        <Button x:Name="btn3" Content="3" Grid.Row="3" Grid.Column="5" Click="Btn_Num_Click"/>
+        <Button x:Name="btn4" Content="4" Grid.Row="5" Grid.Column="1" Click="Btn_Num_Click"/>
+        <Button x:Name="btn5" Content="5" Grid.Row="5" Grid.Column="3" Click="Btn_Num_Click"/>
+        <Button x:Name="btn6" Content="6" Grid.Row="5" Grid.Column="5" Click="Btn_Num_Click"/>
+        <Button x:Name="btn7" Content="7" Grid.Row="7" Grid.Column="1" Click="Btn_Num_Click"/>
+        <Button x:Name="btn8" Content="8" Grid.Row="7" Grid.Column="3" Click="Btn_Num_Click"/>
+        <Button x:Name="btn9" Content="9" Grid.Row="7" Grid.Column="5" Click="Btn_Num_Click"/>
+        <Button x:Name="btn0" Content="0" Grid.Row="9" Grid.Column="1" Click="Btn_Num_Click"/>
+
+        <Button x:Name="btnPlus" Content="+" Grid.Row="5" Grid.Column="7" Click="Btn_Op_Click" IsEnabled="False"/>
+        <Button x:Name="btnMoins" Content="-" Grid.Row="7" Grid.Column="7" Click="Btn_Op_Click" IsEnabled="False"/>
+        <Button x:Name="btnDivise" Content="/" Grid.Row="9" Grid.Column="5" Click="Btn_Op_Click" IsEnabled="False"/>
+        <Button x:Name="btnMultiplie" Content="*" Grid.Row="9" Grid.Column="7" Click="Btn_Op_Click" IsEnabled="False"/>
+
+        <Button x:Name="btnVirgule" Content="." Grid.Row="9" Grid.Column="3" Click="Btn_Coma_Click" IsEnabled="False"/>
+
+        
+
+        <Button x:Name="btnCe" Content="CE" Grid.Row="3" Grid.Column="7" Click="ButtonCE_Click"/>
+        <Button x:Name="btnEgal" Content="=" Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="7" Click="ButtonEQUALS_Click" IsEnabled="False"/>
+
+    </Grid>
+</Window>
+

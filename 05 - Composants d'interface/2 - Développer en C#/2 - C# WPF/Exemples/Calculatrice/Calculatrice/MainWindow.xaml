@@ -34,20 +34,20 @@
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <Label x:Name="lblAfficheur" Grid.Column="1" Content="" Grid.Row="1" Grid.ColumnSpan="7" Background="#FFB7ADAD"/>
-        <Button x:Name="btn1" Content="1" Grid.Row="3" Grid.Column="1"/>
-        <Button x:Name="btn2" Content="2" Grid.Row="3" Grid.Column="3"/>
-        <Button x:Name="btn3" Content="3" Grid.Row="3" Grid.Column="5"/>
+        <Button x:Name="btn1" Content="1" Grid.Row="3" Grid.Column="1" Click="btnNum_Click"/>
+        <Button x:Name="btn2" Content="2" Grid.Row="3" Grid.Column="3" Click="btnNum_Click"/>
+        <Button x:Name="btn3" Content="3" Grid.Row="3" Grid.Column="5" Click="btnNum_Click"/>
         <Button x:Name="btnCe" Content="CE" Grid.Row="3" Grid.Column="7"/>
-        <Button x:Name="btn4" Content="4" Grid.Row="5" Grid.Column="1"/>
-        <Button x:Name="btn5" Content="5" Grid.Row="5" Grid.Column="3"/>
-        <Button x:Name="btn6" Content="5" Grid.Row="5" Grid.Column="5"/>
+        <Button x:Name="btn4" Content="4" Grid.Row="5" Grid.Column="1" Click="btnNum_Click"/>
+        <Button x:Name="btn5" Content="5" Grid.Row="5" Grid.Column="3" Click="btnNum_Click"/>
+        <Button x:Name="btn6" Content="5" Grid.Row="5" Grid.Column="5" Click="btnNum_Click"/>
         <Button x:Name="btnPlus" Content="+" Grid.Row="5" Grid.Column="7"/>
-        <Button x:Name="btn7" Content="7" Grid.Row="7" Grid.Column="1"/>
-        <Button x:Name="btn8" Content="8" Grid.Row="7" Grid.Column="3"/>
-        <Button x:Name="btn9" Content="9" Grid.Row="7" Grid.Column="5"/>
+        <Button x:Name="btn7" Content="7" Grid.Row="7" Grid.Column="1" Click="btnNum_Click"/>
+        <Button x:Name="btn8" Content="8" Grid.Row="7" Grid.Column="3" Click="btnNum_Click"/>
+        <Button x:Name="btn9" Content="9" Grid.Row="7" Grid.Column="5" Click="btnNum_Click"/>
         <Button x:Name="btnMoins" Content="-" Grid.Row="7" Grid.Column="7"/>
-        <Button x:Name="btn0" Content="0" Grid.Row="9" Grid.Column="1"/>
-        <Button x:Name="btnVirgule" Content="," Grid.Row="9" Grid.Column="3"/>
+        <Button x:Name="btn0" Content="0" Grid.Row="9" Grid.Column="1" Click="btnNum_Click"/>
+        <Button x:Name="btnVirgule" Content="," Grid.Row="9" Grid.Column="3" Click="btnNum_Click" />
         <Button x:Name="btnDivise" Content="/" Grid.Row="9" Grid.Column="5"/>
         <Button x:Name="btnMultiplie" Content="x" Grid.Row="9" Grid.Column="7"/>
         <Button x:Name="btnEgal" Content="=" Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="7"/>

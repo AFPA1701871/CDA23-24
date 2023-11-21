@@ -23,6 +23,7 @@ namespace Calculatrice
         public MainWindow()
         {
             InitializeComponent();
+            lblAfficheur.Content = "";
         }
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -36,5 +37,21 @@ namespace Calculatrice
 
 
         }
+
+        /*private void btn1_Click(object sender, RoutedEventArgs e)
+        {
+            lblAfficheur.Content += "1";
+        }
+        private void btn2_Click(object sender, RoutedEventArgs e)
+        {
+            lblAfficheur.Content += "2";
+        }
+        */
+        private void btnNum_Click(object sender, RoutedEventArgs e)
+        {
+            lblAfficheur.Content += (string)((Button)sender).Content;
+        }
+
+      
     }
 }
