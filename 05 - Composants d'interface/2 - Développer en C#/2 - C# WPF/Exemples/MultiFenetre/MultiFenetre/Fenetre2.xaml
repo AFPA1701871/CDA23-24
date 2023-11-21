@@ -9,5 +9,6 @@
     <Grid>
         <Label Content="2eme fenetre" Margin="301,48,326,351" />
         <Label Content="" x:Name="lblMot" Margin="246,138,326,236"/>
+        <TextBox x:Name="tbxRetour" HorizontalAlignment="Left" Margin="246,310,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="175" Height="49" TextChanged="tbxRetour_TextChanged"/>
     </Grid>
 </Window>

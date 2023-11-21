@@ -19,11 +19,21 @@ namespace MultiFenetre
     /// </summary>
     public partial class Fenetre2 : Window
     {
+        public MainWindow Mw { get; set; }
+        public string MotARecuperer { get; set; }
+
         public Fenetre2(MainWindow w, string mot)
         {
+            Mw = w;
             InitializeComponent();
-       
-            lblMot.Content = mot;   
+
+            lblMot.Content = mot;
+        }
+
+        private void tbxRetour_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            //Mw.appelF2(tbxRetour.Text);
+            MotARecuperer=tbxRetour.Text;   
         }
     }
 }

@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MultiFenetre
+namespace Datasource
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -23,22 +23,25 @@ namespace MultiFenetre
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        private void btnClick(object sender, RoutedEventArgs e)
-        {
-            string code = "toto";
-            Fenetre2 f2 = new Fenetre2(this,code);
-            this.Opacity = 0.7;
-            f2.ShowDialog();
-            this.Opacity = 1;
-            lblTitre.Content = f2.MotARecuperer; 
-
 
         }
-        public void appelF2(string mot)
+
+        private List<Produits> CreerListe()
         {
-            lblTitre.Content = mot;
+            List<Produits> liste = new List<Produits>();
+
+            for (int i = 1; i < 15; i++)
+            {
+                Produits p = new Produits(i, "Produit" + i, i * 2);
+                liste.Add(p);
+            }
+
+            return liste;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            dtgProduits.ItemsSource = CreerListe();
         }
     }
 }
