@@ -1,0 +1,277 @@
+﻿<Window x:Class="Eval_Maquette.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Eval_Maquette"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="750" Width="1200" MinHeight="700" MinWidth="1000" >
+    <Window.Resources>
+        <BitmapImage x:Key="cross" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="cross.png"/>
+        <BitmapImage x:Key="check" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="checkmark-png-5.png"/>
+    </Window.Resources>
+    <!--responsive tant que la police et le Calendar le permettent-->
+    <Grid Background="#FFABDBEF">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="7*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="20*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Employé : " VerticalContentAlignment="Center" />
+            <ListBox Grid.Row="1" VerticalContentAlignment="Center" >
+                <ListBoxItem Content="45652 ROBEN Widad"/>
+                <ListBoxItem Content="68832 INCH Karim"/>
+                <ListBoxItem Content="856325 TIKDAM Ahmed" IsSelected="True"/>
+                <ListBoxItem Content="956235 SOKRAT Jamila"/>
+            </ListBox>
+
+
+            <GroupBox Grid.Column="2" Header="Salarié " Grid.RowSpan="2" BorderBrush="SteelBlue">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="4*"/>
+                    </Grid.ColumnDefinitions>
+                    <!-- couleur-->
+                    <Rectangle Grid.RowSpan="5" Grid.ColumnSpan="15" Fill="#FFA9C1EC"/>
+                    <Rectangle Grid.Row="5"  Grid.RowSpan="7" Grid.ColumnSpan="15" Fill="AliceBlue"/>
+                    <!-- ligne 1 -->
+                    <TextBlock Text="Nom : " VerticalAlignment="Center" Grid.Row="1"/>
+                    <TextBox Grid.Column="2"  Text="TIKDAM"  VerticalContentAlignment="Center" Grid.Row="1"/>
+                    <TextBlock Text="Prenom : " VerticalAlignment="Center" Grid.Column="4"  Grid.Row="1"/>
+                    <TextBox Grid.Column="6"  Text="Ahmed"  VerticalContentAlignment="Center"  Grid.Row="1"/>
+                    <TextBlock Text="Genre : " VerticalAlignment="Center" Grid.Column="8" Grid.Row="1"/>
+                    <Grid Grid.Column="10" Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <RadioButton Content="M" Grid.Column="0" VerticalContentAlignment="Center" IsChecked="True" />
+                        <RadioButton Content="F" Grid.Column="1" VerticalContentAlignment="Center"/>
+                    </Grid>
+                    <TextBlock Text="Date de naissance : " VerticalAlignment="Center" TextWrapping="Wrap" Grid.Column="12" Grid.Row="1"/>
+                    <DatePicker  DisplayDate="01/10/1981" Text="01/10/1981" VerticalContentAlignment="Center" Background="White" Grid.Column="14"  Grid.Row="1"/>
+
+                    <!--Ligne 2-->
+                    <TextBlock Text="Adresse : " VerticalAlignment="Center" Grid.Row="3"/>
+                    <TextBox Grid.Column="2"   Grid.Row="3" Grid.ColumnSpan="5" Text="215 BLD Ch de Gaulle 95000 Paris"  VerticalContentAlignment="Center"/>
+                    <TextBlock Text="Situation Familliale : " VerticalAlignment="Center" TextWrapping="Wrap"  Grid.Row="3" Grid.Column="8"/>
+                    <ComboBox  VerticalContentAlignment="Center"   Grid.Row="3" Grid.Column="10">
+                        <ComboBoxItem Content="Celibataire" IsSelected="True"/>
+                    </ComboBox>
+                    <TextBlock Text="Nb enfants : " VerticalAlignment="Center"   Grid.Row="3" Grid.Column="12"/>
+                    <TextBox   Text="0"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center"   Grid.Row="3" Grid.Column="14"/>
+
+                    <!--Ligne 3-->
+
+                    <TextBlock Text="Date d'entrée : " VerticalAlignment="Center" TextWrapping="Wrap"  Grid.Row="5" Grid.Column="0"/>
+                    <DatePicker   Grid.Row="5" Grid.Column="2" DisplayDate="01/01/2010" Text="01/01/2010" VerticalContentAlignment="Center" Background="White"/>
+                    <TextBlock Text="Fonction : " VerticalAlignment="Center"   Grid.Row="5" Grid.Column="4"/>
+                    <ComboBox  VerticalContentAlignment="Center"   Grid.Row="5" Grid.Column="6">
+                        <ComboBoxItem Content="Comptable" IsSelected="True"/>
+                    </ComboBox>
+                    <TextBlock Text="Departement : " VerticalAlignment="Center"   Grid.Row="5" Grid.Column="8"/>
+                    <ComboBox  VerticalContentAlignment="Center"   Grid.Row="5" Grid.Column="10">
+                        <ComboBoxItem Content="Administratif" IsSelected="True"/>
+                    </ComboBox>
+                    <TextBlock Text="Service : " VerticalAlignment="Center"  Grid.Row="5" Grid.Column="12" />
+                    <ComboBox  VerticalContentAlignment="Center"   Grid.Row="5" Grid.Column="14">
+                        <ComboBoxItem Content="Comptabilité" IsSelected="True"/>
+                    </ComboBox>
+
+                    <!--Ligne 4-->
+                    <TextBlock Text="CNSS : " VerticalAlignment="Center" Grid.Row="7" Grid.Column="0" />
+                    <TextBox  Text="654123"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Grid.Row="7" Grid.Column="2" />
+                    <TextBlock Text="CIMR : " VerticalAlignment="Center"  Grid.Row="7" Grid.Column="4"  />
+                    <TextBox  Text="654123"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Grid.Row="7" Grid.Column="6" />
+                    <TextBlock Text="Mutuelle : " VerticalAlignment="Center"  Grid.Row="7" Grid.Column="8" />
+                    <CheckBox  VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="7" Grid.Column="10" IsChecked="True" />
+                    <TextBlock Text="Numéro Mutuelle : " VerticalAlignment="Center" TextWrapping="Wrap" Grid.Row="7" Grid.Column="12" />
+                    <TextBox  Text="698543"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Row="7" Grid.Column="14" />
+                    <!--Ligne 5-->
+
+                    <TextBlock Text="Type de paiement : " VerticalAlignment="Center" TextWrapping="Wrap"  Grid.Row="9" Grid.Column="0"/>
+                    <ComboBox  VerticalContentAlignment="Center"  Grid.Row="9" Grid.Column="2">
+                        <ComboBoxItem Content="Mensuel" IsSelected="True"/>
+                    </ComboBox>
+                    <TextBlock Text="Mode paiement : " VerticalAlignment="Center" TextWrapping="Wrap"  Grid.Row="9" Grid.Column="4"/>
+                    <ComboBox  VerticalContentAlignment="Center"  Grid.Row="9" Grid.Column="6">
+                        <ComboBoxItem Content="Virement" IsSelected="True"/>
+                    </ComboBox>
+                    <TextBlock Text="Salaire de base Horaire : " VerticalAlignment="Center" TextWrapping="Wrap"  Grid.Row="9" Grid.Column="8"/>
+                    <TextBox   Text="36,65"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Grid.Row="9" Grid.Column="10"/>
+
+                    <TextBlock Text="Prime : " VerticalAlignment="Center"  Grid.Row="9" Grid.Column="12"/>
+                    <TextBox   Text="500"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Grid.Row="9" Grid.Column="14"/>
+
+                </Grid>
+            </GroupBox>
+
+            <!--Partie basse-->
+
+
+            <Label Grid.Row="3" Content="Mois : " VerticalContentAlignment="Center"/>
+            <Calendar Name="ChoixDuMois" Grid.Row="4" DisplayMode="Year"
+          DisplayModeChanged="PasDeChoixDuJour" />
+
+            <GroupBox Grid.Column="2" Grid.Row="3" Header="Fiche de paie" Grid.RowSpan="2" BorderBrush="SteelBlue" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                <!--    <Rectangle   Grid.RowSpan="10" Grid.ColumnSpan="15" Fill="#FFABDBEF"/>-->
+                    <Rectangle Grid.Row="1" Grid.Column="1" Grid.RowSpan="9" Grid.ColumnSpan="4" Fill="AliceBlue"/>
+                    <Label Grid.Row="1" Content="Salaire de base : " VerticalContentAlignment="Center"/>
+                    <Label Grid.Row="2" Content="Prime Ancienneté : " VerticalContentAlignment="Center"/>
+                    <Label Grid.Row="3" Content="Salaire Brut : " VerticalContentAlignment="Center"/>
+                    <Label Grid.Row="4" Content="Cotisation CNSS : " VerticalContentAlignment="Center"/>
+                    <Label Grid.Row="5" Content="AMO : " VerticalContentAlignment="Center"/>
+                    <Label Grid.Row="6" Content="IGR : " VerticalContentAlignment="Center"/>
+                    <Label Grid.Row="7" Content="Mutuelle : " VerticalContentAlignment="Center"/>
+                    <Label Grid.Row="9" Content="Net à Payer : " VerticalContentAlignment="Center"/>
+
+                    <!--Colonne 2-->
+
+                    <Label Grid.Column="1" Content="Base : " VerticalContentAlignment="Center"/>
+                    <TextBox Grid.Column="1" Grid.Row="1" Text="191" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsEnabled="False"/>
+                    <TextBox Grid.Column="1" Grid.Row="2" Text="7000" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsEnabled="False"/>
+                    <TextBox Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsEnabled="False"/>
+                    <TextBox Grid.Column="1" Grid.Row="4" Text="7000" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsEnabled="False"/>
+                    <TextBox Grid.Column="1" Grid.Row="5" Text="7000" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsEnabled="False"/>
+                    <TextBox Grid.Column="1" Grid.Row="6" Text="7000" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsEnabled="False"/>
+                    <TextBox Grid.Column="1" Grid.Row="7" Text="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsEnabled="False"/>
+                    <TextBox Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="4" Grid.RowSpan="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsEnabled="False"/>
+
+                    <!--Colonne 3-->
+
+                    <Label Grid.Column="2"  Content="Taux : " VerticalContentAlignment="Center"/>
+                    <TextBox Grid.Column="2" Grid.Row="1" Text="36,65" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsEnabled="False"/>
+                    <TextBox Grid.Column="2" Grid.Row="2" Text="10%" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsEnabled="False"/>
+                    <TextBox Grid.Column="2" Grid.Row="4" Text="4,48%" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsEnabled="False"/>
+                    <TextBox Grid.Column="2" Grid.Row="5" Text="2,26%" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsEnabled="False"/>
+                    <TextBox Grid.Column="2" Grid.Row="6" Text="20%" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsEnabled="False"/>
+                    <TextBox Grid.Column="2" Grid.Row="7" Text="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsEnabled="False"/>
+
+                    <!--Colonne 4-->
+
+                    <Label Grid.Column="3"  Content="A Payer : " VerticalContentAlignment="Center"/>
+                    <TextBox Grid.Column="3" Grid.Row="1" Text="7 000,00 €" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsEnabled="False"/>
+                    <TextBox Grid.Column="3" Grid.Row="2" Text="700,00 €" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsEnabled="False"/>
+                    <TextBox Grid.Column="3" Grid.Row="3" Text="7 700,00 €" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsEnabled="False"/>
+                    <TextBox Grid.Column="3" Grid.Row="4" Grid.RowSpan="4" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsEnabled="False"/>
+                    <TextBox Grid.Column="3" Grid.Row="9" Text="5 808,20 €" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsEnabled="False" FontWeight="Bold" FontSize="14"/>
+
+                    <!--Colonne 5-->
+
+                    <Label Grid.Column="4"  Content="A retenir : " VerticalContentAlignment="Center"/>
+                    <TextBox Grid.Column="4" Grid.Row="1" Grid.RowSpan="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsEnabled="False"/>
+                    <TextBox Grid.Column="4" Grid.Row="4" Text="313,60 €" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsEnabled="False"/>
+                    <TextBox Grid.Column="4" Grid.Row="5" Text="158,20 €" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsEnabled="False"/>
+                    <TextBox Grid.Column="4" Grid.Row="6" Text="1 400,00 €" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsEnabled="False"/>
+                    <TextBox Grid.Column="4" Grid.Row="7" Text="20,00 €" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsEnabled="False" />
+                </Grid>
+            </GroupBox>
+
+            <!--Partie bouton-->
+
+            <Grid Grid.Row="6" Grid.Column="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Button Content="Enregistrer" Grid.Column="1"  BorderBrush="SteelBlue">
+                    <Button.Background>
+                        <ImageBrush Stretch="Uniform" AlignmentX="Left" ImageSource="{DynamicResource check}">
+                            <ImageBrush.RelativeTransform>
+                                <TransformGroup>
+                                    <ScaleTransform CenterY="0.5" CenterX="0.25" ScaleX="0.75" ScaleY="0.75"/>
+
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ImageBrush.RelativeTransform>
+                        </ImageBrush>
+                    </Button.Background>
+                </Button>
+                <Button Content="Sortir " Grid.Column="3" BorderBrush="SteelBlue">
+                    <Button.Background>
+                        <ImageBrush ImageSource="{DynamicResource cross}" Stretch="Uniform" AlignmentX="Left">
+                            <ImageBrush.RelativeTransform>
+                                <TransformGroup>
+                                    <ScaleTransform CenterY="0.5" CenterX="0.25" ScaleX="0.75" ScaleY="0.75"/>
+
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </ImageBrush.RelativeTransform>
+                        </ImageBrush>
+                    </Button.Background>
+                </Button>
+            </Grid>
+        </Grid>
+    </Grid>
+
+</Window>
