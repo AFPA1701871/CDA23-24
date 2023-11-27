@@ -26,8 +26,12 @@ namespace API_Personnes.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Personne>> GetAllPersonnes()
         {
+            // On appelle le service pour obtenir la liste des personnes
             IEnumerable<Personne> listePersonnes = _service.GetAllPersonnes();
-            return Ok(_mapper.Map<IEnumerable<PersonnesDTO>>(listePersonnes));
+            // Je transforme la liste de personnes en liste de personnesDto
+            IEnumerable<PersonnesDTO> listePersonnesDtos= _mapper.Map<IEnumerable<PersonnesDTO>>(listePersonnes);
+            // On renvoi Ok pour dire que ca c'ets bien passé (code 200) et la liste des personnesDtos transformé en JSON
+            return Ok(listePersonnesDtos);
         }
         //GET api/Personnes/{id}
         [HttpGet("{id}", Name = "GetPersonneById")]

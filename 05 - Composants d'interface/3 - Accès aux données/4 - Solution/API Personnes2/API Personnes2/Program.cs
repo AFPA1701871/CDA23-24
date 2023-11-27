@@ -16,6 +16,7 @@ namespace API_Personnes2
             builder.Services.AddTransient<PersonnesServices>();
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+            builder.Services.AddControllers().AddNewtonsoftJson();
 
             //Fin AJout
 

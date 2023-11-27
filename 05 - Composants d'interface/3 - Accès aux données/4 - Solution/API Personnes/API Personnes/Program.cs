@@ -20,6 +20,8 @@ namespace API_Personnes
             builder.Services.AddTransient<PersonnesService>();
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+            builder.Services.AddControllers().AddNewtonsoftJson(); // pour faire fonctionner le patch
+            
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
