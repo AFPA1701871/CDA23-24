@@ -1,16 +1,24 @@
-﻿using API_Personnes.Models.Data;
+﻿using API_Personnes2.Models.Data;
 
-namespace API_Personnes.Models.Services
+namespace API_Personnes2.Models.Services
 {
-    public class PersonnesService
+    public class PersonnesServices
     {
         private readonly PersonnesDbContext _context;
 
-        public PersonnesService(PersonnesDbContext context)
+        public PersonnesServices(PersonnesDbContext context)
         {
             _context = context;
         }
 
+        public IEnumerable<Personne> GetAllPersonnes()
+        {
+            return _context.Personnes.ToList();
+        }
+        public Personne GetPersonneById(int id)
+        {
+            return _context.Personnes.FirstOrDefault(p => p.IdPersonne == id);
+        }
         public void AddPersonnes(Personne p)
         {
             if (p == null) throw new ArgumentNullException(nameof(p));
@@ -18,7 +26,6 @@ namespace API_Personnes.Models.Services
             _context.Personnes.Add(p);
             _context.SaveChanges();
         }
-
         public void DeletePersonne(Personne p)
         {
             //si l'objet personne est null, on renvoi une exception
@@ -28,19 +35,9 @@ namespace API_Personnes.Models.Services
             _context.Personnes.Remove(p);
             _context.SaveChanges();
         }
-
-        public IEnumerable<Personne> GetAllPersonnes()
-        {
-            return _context.Personnes.ToList();
-        }
-
-        public Personne GetPersonneById(int id)
-        {
-            return _context.Personnes.FirstOrDefault(p => p.IdPersonne == id);
-        }
-
         public void UpdatePersonne(Personne p)
         {
+            _context.SaveChanges();
         }
         //nothing
         //on va mettre à jour le context dans le controller par mapping et passer

@@ -1,24 +1,26 @@
 
-using API_Personnes.Models;
-using API_Personnes.Models.Services;
+using API_Personnes2.Models;
+using API_Personnes2.Models.Services;
 using Microsoft.EntityFrameworkCore;
 
-namespace API_Personnes
+namespace API_Personnes2
 {
     public class Program
     {
         public static void Main(string[] args)
         {
-
-            // scaffold 
-            // scaffold-DbContext -Connection name=default -Provider MySql.EntityFrameworkCore -OutputDir Models/Data -Context PersonnesDbContext -ContextDir Models
-            
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            // Ajout
             builder.Services.AddDbContext<PersonnesDbContext>(options => options.UseMySQL(builder.Configuration.GetConnectionString("Default")));
-            builder.Services.AddTransient<PersonnesService>();
+            builder.Services.AddTransient<PersonnesServices>();
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+
+            //Fin AJout
+
+
+            // Add services to the container.
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
