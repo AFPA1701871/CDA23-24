@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Schools.Data.Dtos
 {
-    public partial class StudentDTOIn
+    public  class StudentDTOIn
     {
         public StudentDTOIn()
         {
@@ -19,7 +19,7 @@ namespace Schools.Data.Dtos
     }
 
 
-    public partial class StudentDTOOut
+    public  class StudentDTOOut
     {
         public StudentDTOOut()
         {
@@ -29,7 +29,7 @@ namespace Schools.Data.Dtos
         public string Name { get; set; }
     }
 
-    public partial class StudentDTOAvecGrade
+    public  class StudentDTOAvecGrade
     {
         public StudentDTOAvecGrade()
         {
@@ -43,7 +43,7 @@ namespace Schools.Data.Dtos
         public virtual GradeDTOOut Grade { get; set; }
     }
 
-    public partial class StudentDTOAvecGradeEtCourses
+    public  class StudentDTOAvecGradeEtCourses
     {
         public StudentDTOAvecGradeEtCourses()
         {

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Schools.Data.Dtos
 {
-    public partial class GradeDTOIn
+    public  class GradeDTOIn
     {
         public GradeDTOIn()
         {
@@ -15,7 +15,7 @@ namespace Schools.Data.Dtos
 
     }
 
-    public partial class GradeDTOOut
+    public  class GradeDTOOut
     {
         public GradeDTOOut()
         {
@@ -25,7 +25,7 @@ namespace Schools.Data.Dtos
     }
 
 
-    public partial class GradeDTOAvecStudents
+    public  class GradeDTOAvecStudents
     {
         public GradeDTOAvecStudents()
         {

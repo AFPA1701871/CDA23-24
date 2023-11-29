@@ -5,32 +5,32 @@ using System.Collections.Generic;
 
 namespace Schools.Data.Dtos
 {
-    public partial class StudentsCourseDTOIn
+    public  class StudentsCourseDTOIn
     {
         public int? StudentId { get; set; }
         public int? CourseId { get; set; }
 
     }
 
-    public partial class StudentsCourseDTOOut
+    public  class StudentsCourseDTOOut
     {
         public int StudentCourseId { get; set; }
         public int? StudentId { get; set; }
         public int? CourseId { get; set; }
 
     }
-    public partial class StudentsCourseDTOAvecEtudiant
+    public  class StudentsCourseDTOAvecEtudiant
     {
         public virtual StudentDTOOut Student { get; set; }
     }
 
-    public partial class StudentsCourseDTOAvecEtudiantEtCours
+    public  class StudentsCourseDTOAvecEtudiantEtCours
     {
         public virtual CourseDTOOut Course { get; set; }
         public virtual StudentDTOOut Student { get; set; }
     }
 
-    public partial class StudentsCourseDTOAvecCours
+    public  class StudentsCourseDTOAvecCours
     {
         public virtual CourseDTOOut Course { get; set; }
     }

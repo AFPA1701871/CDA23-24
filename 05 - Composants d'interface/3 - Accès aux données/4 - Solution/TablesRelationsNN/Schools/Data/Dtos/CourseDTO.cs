@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace Schools.Data.Dtos
 
 {
-    public partial class CourseDTOIn
+    public  class CourseDTOIn
     {
         public CourseDTOIn()
         {
@@ -19,7 +19,7 @@ namespace Schools.Data.Dtos
     }
 
 
-    public partial class CourseDTOOut
+    public  class CourseDTOOut
     {
         public CourseDTOOut()
         {
@@ -31,7 +31,7 @@ namespace Schools.Data.Dtos
     }
 
 
-    public partial class CourseDTOAvecStudentCourse
+    public  class CourseDTOAvecStudentCourse
     {
         public CourseDTOAvecStudentCourse()
         {
