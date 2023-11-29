@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Schools.Controllers.CoursesController" Collapsed="true">
+    <Position X="7.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAIQAIABAACAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Controllers\CoursesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schools.Controllers.GradesController" Collapsed="true">
+    <Position X="9.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAQAABAAAQAEABAAAEAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\GradesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schools.Controllers.StudentsController" Collapsed="true">
+    <Position X="4.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAUAAABAAgAAAAAAABIAQAAAAAAAAA=</HashCode>
+      <FileName>Controllers\StudentsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schools.Controllers.StudentsCoursesController" Collapsed="true">
+    <Position X="6" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAACAAAAACQAAABAIAIAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Controllers\StudentsCoursesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schools.Data.Dtos.CourseDTOIn" Collapsed="true">
+    <Position X="4.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Dtos\CourseDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schools.Data.Dtos.CourseDTOOut" Collapsed="true">
+    <Position X="6" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Dtos\CourseDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schools.Data.Dtos.CourseDTOAvecStudentCourse" Collapsed="true">
+    <Position X="2.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>Data\Dtos\CourseDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schools.Data.Dtos.GradeDTOIn" Collapsed="true">
+    <Position X="6" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Dtos\GradeDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schools.Data.Dtos.GradeDTOOut" Collapsed="true">
+    <Position X="7.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Dtos\GradeDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schools.Data.Dtos.GradeDTOAvecStudents" Collapsed="true">
+    <Position X="4.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Dtos\GradeDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schools.Data.Dtos.StudentDTOIn" Collapsed="true">
+    <Position X="0.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Data\Dtos\StudentDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schools.Data.Dtos.StudentDTOOut" Collapsed="true">
+    <Position X="2.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Dtos\StudentDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schools.Data.Dtos.StudentDTOAvecGrade" Collapsed="true">
+    <Position X="7.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAEAAAAAEAAAA=</HashCode>
+      <FileName>Data\Dtos\StudentDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schools.Data.Dtos.StudentDTOAvecGradeEtCourses" Collapsed="true">
+    <Position X="9.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAEAAIAAEAAAA=</HashCode>
+      <FileName>Data\Dtos\StudentDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schools.Data.Dtos.StudentsCourseDTOIn" Collapsed="true">
+    <Position X="2.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Data\Dtos\StudentsCourseDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schools.Data.Dtos.StudentsCourseDTOOut" Collapsed="true">
+    <Position X="4.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Data\Dtos\StudentsCourseDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schools.Data.Dtos.StudentsCourseDTOAvecEtudiant" Collapsed="true">
+    <Position X="9.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Dtos\StudentsCourseDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schools.Data.Dtos.StudentsCourseDTOAvecEtudiantEtCours" Collapsed="true">
+    <Position X="0.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Dtos\StudentsCourseDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schools.Data.Dtos.StudentsCourseDTOAvecCours" Collapsed="true">
+    <Position X="7.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Dtos\StudentsCourseDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schools.Data.Models.Course" Collapsed="true">
+    <Position X="0.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACEAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>Data\Models\Course.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schools.Data.Models.Grade" Collapsed="true">
+    <Position X="2.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Data\Models\Grade.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schools.Data.Models.schoolsContext" Collapsed="true">
+    <Position X="4.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAQAQAAAAAAAAAAAAEAAAAAAAAAAIABEAAAA=</HashCode>
+      <FileName>Data\Models\schoolsContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schools.Data.Models.Student" Collapsed="true">
+    <Position X="6" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAEAAIAAECAAA=</HashCode>
+      <FileName>Data\Models\Student.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schools.Data.Models.StudentsCourse" Collapsed="true">
+    <Position X="6" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAQAAAQAAAAIAAAAAAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Data\Models\StudentsCourse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schools.Data.Profiles.CoursesProfile" Collapsed="true">
+    <Position X="9.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Profiles\CoursesProfile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schools.Data.Profiles.GradesProfile" Collapsed="true">
+    <Position X="0.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Profiles\GradesProfile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schools.Data.Profiles.StudentsCoursesProfile" Collapsed="true">
+    <Position X="7.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Profiles\StudentsCoursesProfile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schools.Data.Profiles.StudentsProfile" Collapsed="true">
+    <Position X="0.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Profiles\StudentsProfile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schools.Data.Services.CoursesService" Collapsed="true">
+    <Position X="0.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAARAIAAIAABAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Data\Services\CoursesService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schools.Data.Services.GradesService" Collapsed="true">
+    <Position X="2.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAgAAAAABBAAAAEAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Services\GradesService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schools.Data.Services.StudentsCoursesService" Collapsed="true">
+    <Position X="9.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAABAAAAAAAAIAIAAAAAAAAAAAABABAAAA=</HashCode>
+      <FileName>Data\Services\StudentsCoursesService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schools.Data.Services.StudentsServices">
+    <Position X="2.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAABAAEAAAAAAAEAAAAAAAAAIAAAAAAIAA=</HashCode>
+      <FileName>Data\Services\StudentsService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

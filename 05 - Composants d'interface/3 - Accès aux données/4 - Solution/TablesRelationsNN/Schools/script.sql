@@ -1,0 +1,43 @@
+﻿
+---- Table Courses
+----
+--CREATE TABLE Courses(
+--   CourseId INT AUTO_INCREMENT ,
+--   CourseName VARCHAR(100) ,
+--   Description VARCHAR(100) ,
+--   PRIMARY KEY(CourseId)
+--);
+--ALTER TABLE Courses ENGINE=InnoDB;
+
+---- 
+---- Table Grade
+----
+--CREATE TABLE Grade(
+--   GradeID INT AUTO_INCREMENT,
+--   GradeName VARCHAR(100) ,
+--   PRIMARY KEY(GradeID)
+--);
+--ALTER TABLE Grade ENGINE=InnoDB;
+
+---- 
+---- Table Student
+----
+--CREATE TABLE Student(
+--   StudentId INT AUTO_INCREMENT,
+--   Name VARCHAR(100) ,
+--   GradeID INT NOT NULL,
+--   PRIMARY KEY(StudentId),
+--   FOREIGN KEY(GradeID) REFERENCES Grade(GradeID)
+--);
+--ALTER TABLE Student ENGINE=InnoDB;
+
+---- 
+---- Table participe
+----
+--CREATE TABLE StudentsCourses(
+--    StudentCourseId INT AUTO_INCREMENT PRIMARY KEY,
+--   StudentId INT,
+--   CourseId INT,
+--   FOREIGN KEY(StudentId) REFERENCES Student(StudentId),
+--   FOREIGN KEY(CourseId) REFERENCES Courses(CourseId)
+--)ENGINE=InnoDB;
