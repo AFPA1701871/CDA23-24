@@ -17,8 +17,6 @@ namespace ClientsArticles.Models.DTOs
         public string? NomClient { get; set; }
 
         public string? PrenomClient { get; set; }
-
-        public DateTime? DateEntreeClient { get; set; }
     }
     public class ClientsDtoAvecCommandes // inutile pûisque équivalent à ClientsDtoOUT
     {

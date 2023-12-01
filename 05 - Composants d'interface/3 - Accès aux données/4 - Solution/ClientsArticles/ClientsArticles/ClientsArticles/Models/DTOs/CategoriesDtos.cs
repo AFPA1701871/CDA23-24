@@ -12,10 +12,8 @@ namespace ClientsArticles.Models.DTOs
         public int IdCategorie { get; set; }
 
         public string LibelleCategorie { get; set; } = null!;
-
-        public virtual ICollection<ArticlesDtoOUT> ListeArticles { get; set; } = new List<ArticlesDtoOUT>();
     }
-    public class CategoriesDtoAvecArticles  // inutile pûisque équivalent à CategoriesDtoOUT
+    public class CategoriesDtoAvecArticles  
     {
         public int IdCategorie { get; set; }
 

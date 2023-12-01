@@ -35,12 +35,12 @@ namespace ClientsArticles.Models.Services
 
         public IEnumerable<Article> GetAllArticles()
         {
-            return _context.Articles.Include("ListeCommandes.LeClient").ToList();
+            return _context.Articles.Include("ListeCommandes.LeClient").Include("LaCategorie").ToList();
         }
 
         public Article GetArticleById(int id)
         {
-            return _context.Articles.Include("ListeCommandes.LeClient").FirstOrDefault(article => article.IdArticle == id);
+            return _context.Articles.Include("ListeCommandes.LeClient").Include("LaCategorie").FirstOrDefault(article => article.IdArticle == id);
         }
 
         public void UpdateArticle(Article article)

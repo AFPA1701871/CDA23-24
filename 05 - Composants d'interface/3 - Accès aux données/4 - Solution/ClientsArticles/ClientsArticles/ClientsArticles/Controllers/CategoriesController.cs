@@ -45,12 +45,13 @@ namespace ClientsArticles.Controllers
         [HttpPost]
         public ActionResult<CategoriesDtoOUT> CreateCategories(CategoriesDtoIN v)
         {
-            _service.AddCategorie(v);
-            return CreatedAtRoute(nameof(GetCategoriesById), new { Id = v.IdCategorie }, v);
+            Categorie categ = _mapper.Map<Categorie>(v);
+            _service.AddCategorie(categ);
+            return CreatedAtRoute(nameof(GetCategoriesById), new { Id = categ.IdCategorie }, categ);
         }
 
         [HttpPut("{id}")]
-        public ActionResult UpdateCategories(int id, Categorie v)
+        public ActionResult UpdateCategories(int id, CategoriesDtoIN v)
         {
             var vFromRepo = _service.GetCategorieById(id);
             if (vFromRepo == null)
