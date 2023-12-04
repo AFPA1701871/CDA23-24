@@ -13,9 +13,6 @@ namespace ClientsArticles.Models.DTOs
 
         public int? QuantiteCommande { get; set; }
 
-        public virtual Article? LArticle { get; set; }
-
-        public virtual Client? LeClient { get; set; }
     }
     public class CommandesDtoOUT
     {

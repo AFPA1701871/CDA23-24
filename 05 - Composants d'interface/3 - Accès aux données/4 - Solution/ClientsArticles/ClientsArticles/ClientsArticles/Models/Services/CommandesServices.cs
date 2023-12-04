@@ -14,7 +14,7 @@ namespace ClientsArticles.Models.Services
             _context = context;
         }
 
-        public void Add(Commande cde)
+        public void AddCommande(Commande cde)
         {
             if (cde == null)
             {
@@ -24,7 +24,7 @@ namespace ClientsArticles.Models.Services
             _context.SaveChanges();
         }
 
-        public void Delete(Commande cde)
+        public void DeleteCommande(Commande cde)
         {
             if (cde == null)
             {
@@ -34,17 +34,17 @@ namespace ClientsArticles.Models.Services
             _context.SaveChanges();
         }
 
-        public IEnumerable<Commande> GetAlls()
+        public IEnumerable<Commande> GetAllCommandes()
         {
             return _context.Commandes.Include("LeClient").Include("LArticle").ToList();
         }
 
-        public Commande GetById(int id)
+        public Commande GetCommandeById(int id)
         {
             return _context.Commandes.Include("LeClient").Include("LArticle").FirstOrDefault(v => v.IdCommande == id);
         }
 
-        public void Update(Commande cde)
+        public void UpdateCommande(Commande cde)
         {
             if (cde == null)
             {
