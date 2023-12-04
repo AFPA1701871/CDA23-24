@@ -62,4 +62,15 @@ namespace ClientsArticles.Models.DTOs
 
         public virtual CategoriesDtoOUT LaCategorie { get; set; } = null!;
     }
+
+    public class ArticlesDtoAplati
+    {
+       
+        public string? DescriptionArticle { get; set; }
+
+        public int? PrixArticle { get; set; }
+
+        public string CategorieAplatie { get; set; }
+    }
+
 }

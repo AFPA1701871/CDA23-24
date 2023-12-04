@@ -25,10 +25,10 @@ namespace ClientsArticles.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<ArticlesDtoAvecCategorie>> GetAllArticles()
+        public ActionResult<IEnumerable<ArticlesDtoAplati>> GetAllArticles()
         {
             var listeArticles = _service.GetAllArticles();
-            return Ok(_mapper.Map<IEnumerable<ArticlesDtoAvecCategorie>>(listeArticles));
+            return Ok(_mapper.Map<IEnumerable<ArticlesDtoAplati>>(listeArticles));
         }
 
         [HttpGet("{id}", Name = "GetArticlesById")]

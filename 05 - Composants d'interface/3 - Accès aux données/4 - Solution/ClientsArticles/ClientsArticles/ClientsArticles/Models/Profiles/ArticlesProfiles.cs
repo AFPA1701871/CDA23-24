@@ -13,6 +13,7 @@ namespace ClientsArticles.Models.Profiles
             CreateMap<Article, ArticlesDtoAvecCategorie>();
             CreateMap<Article, ArticlesDtoAvecCategorieEtCommandes>();
             CreateMap<Article, ArticlesDtoAvecCommandes>();
+            CreateMap<Article, ArticlesDtoAplati>().ForMember(aa => aa.CategorieAplatie, o => o.MapFrom(a => a.LaCategorie.LibelleCategorie));
         }
     }
 }
