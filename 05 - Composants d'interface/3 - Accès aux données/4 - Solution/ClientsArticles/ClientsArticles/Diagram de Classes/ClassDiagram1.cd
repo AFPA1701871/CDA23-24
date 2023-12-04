@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="ClientsArticles.Models.ClientsArticlesDbContext">
+    <Position X="15.25" Y="0.5" Width="5.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAQAQAAAAACAAAAAAEAAAEAAAAAAAAAAAIAA=</HashCode>
+      <FileName>ClientsArticlesDbContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientsArticles.Models.Data.Article">
+    <Position X="4" Y="0.5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>BAAIAAAAAAAAAAAAAAAAAAACABAAAAAAAAAABAAAAAE=</HashCode>
+      <FileName>Article.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientsArticles.Models.Data.Categorie">
+    <Position X="0.5" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>BAAACAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Categorie.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientsArticles.Models.Data.Client">
+    <Position X="11.25" Y="0.5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AgAIAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAACBAAAAAA=</HashCode>
+      <FileName>Client.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientsArticles.Models.Data.Commande">
+    <Position X="8" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>EAAAAACAAAAAAAAAAAAAAAAACACAAAAAAIAABAAAAAA=</HashCode>
+      <FileName>Commande.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientsArticles.Models.DTOs.ArticlesDtoAplati">
+    <Position X="19" Y="4.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAACABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ArticlesDtos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientsArticles.Models.DTOs.ArticlesDtoAvecCategorie">
+    <Position X="6.75" Y="4.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAACABAAAAAAAAAABAAAAAE=</HashCode>
+      <FileName>ArticlesDtos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientsArticles.Models.DTOs.ArticlesDtoAvecCategorieEtCommandes">
+    <Position X="14.5" Y="4.75" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>BAAIAAAAAAAAAAAAAAAAAAACABAAAAAAAAAABAAAAAE=</HashCode>
+      <FileName>ArticlesDtos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientsArticles.Models.DTOs.ArticlesDtoAvecCommandes">
+    <Position X="10" Y="4.75" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>BAAIAAAAAAAAAAAAAAAAAAACABAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>ArticlesDtos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientsArticles.Models.DTOs.ArticlesDtoIN">
+    <Position X="0.5" Y="4.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAACABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ArticlesDtos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientsArticles.Models.DTOs.ArticlesDtoOUT">
+    <Position X="3.75" Y="4.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAACABAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>ArticlesDtos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientsArticles.Models.DTOs.CategoriesDtoAvecArticles">
+    <Position X="6" Y="3" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>BAAACAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CategoriesDtos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientsArticles.Models.DTOs.CategoriesDtoIN">
+    <Position X="0.5" Y="3" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CategoriesDtos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientsArticles.Models.DTOs.CategoriesDtoOUT">
+    <Position X="3.25" Y="3" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>BAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CategoriesDtos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientsArticles.Models.DTOs.CommandesDtoAvecArticle">
+    <Position X="10.25" Y="7" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAACACAAAAAAIAABAAAAAA=</HashCode>
+      <FileName>CommandesDtos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientsArticles.Models.DTOs.CommandesDtoAvecClient">
+    <Position X="7" Y="7" Width="3" />
+    <TypeIdentifier>
+      <HashCode>EAAAAACAAAAAAAAAAAAAAAAACAAAAAAAAIAABAAAAAA=</HashCode>
+      <FileName>CommandesDtos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientsArticles.Models.DTOs.CommandesDtoAvecClientEtArticle">
+    <Position X="13.5" Y="7" Width="3" />
+    <TypeIdentifier>
+      <HashCode>EAAAAACAAAAAAAAAAAAAAAAACACAAAAAAIAABAAAAAA=</HashCode>
+      <FileName>CommandesDtos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientsArticles.Models.DTOs.CommandesDtoIN">
+    <Position X="0.5" Y="7" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAIAABAAAAAA=</HashCode>
+      <FileName>CommandesDtos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientsArticles.Models.DTOs.CommandesDtoOUT">
+    <Position X="3.75" Y="7" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAACAAAAAAAAIAABAAAAAA=</HashCode>
+      <FileName>CommandesDtos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientsArticles.Models.DTOs.ClientsDtoAvecCommandes">
+    <Position X="6.75" Y="9.5" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AgAIAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAACBAAAAAA=</HashCode>
+      <FileName>ClientsDtos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientsArticles.Models.DTOs.ClientsDtoIN">
+    <Position X="0.5" Y="9.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>ClientsDtos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientsArticles.Models.DTOs.ClientsDtoOUT">
+    <Position X="3.75" Y="9.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>ClientsDtos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientsArticles.Models.Profiles.ArticlesProfiles">
+    <Position X="18.25" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ArticlesProfiles.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientsArticles.Models.Profiles.CategoriesProfiles">
+    <Position X="16.25" Y="11.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CategoriesProfiles.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientsArticles.Models.Profiles.ClientsProfiles">
+    <Position X="22" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ClientsProfiles.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientsArticles.Models.Profiles.CommandesProfiles">
+    <Position X="20" Y="11.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CommandesProfiles.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientsArticles.Models.Services.ArticlesServices">
+    <Position X="4.5" Y="11.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAIAQAAAABABAAAAAAAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>ArticlesServices.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientsArticles.Models.Services.CategoriesServices">
+    <Position X="0.5" Y="11.75" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAABAAAAAAAAAAEAEAACAAAAAAAAAACAAA=</HashCode>
+      <FileName>CategoriesServices.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientsArticles.Models.Services.ClientsServices">
+    <Position X="12.25" Y="11.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAABAAAAACAAAAAAAAAAAAAAAADAAAAAAQ=</HashCode>
+      <FileName>ClientsServices.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientsArticles.Models.Services.CommandesServices">
+    <Position X="8.25" Y="11.75" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAQAAAAgAABAAAAAAAAACAgAAA=</HashCode>
+      <FileName>CommandesServices.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientsArticles.Controllers.ArticlesController">
+    <Position X="6.5" Y="14.5" Width="5.25" />
+    <TypeIdentifier>
+      <HashCode>AAAQEIAQAAAAAABQAAABAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>ArticlesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientsArticles.Controllers.CategoriesController">
+    <Position X="0.5" Y="14.5" Width="5.75" />
+    <TypeIdentifier>
+      <HashCode>ECAAABAAAAIAAAAQAAAFAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>CategoriesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientsArticles.Controllers.ClientsController">
+    <Position X="18" Y="14.5" Width="5.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAQAAABAABAAABAgAAAAAABAAAAAAQ=</HashCode>
+      <FileName>ClientsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientsArticles.Controllers.CommandesController">
+    <Position X="12" Y="14.5" Width="5.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAQAAARAEAAgAAAAAAAAAAAACAoAAA=</HashCode>
+      <FileName>CommandesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
