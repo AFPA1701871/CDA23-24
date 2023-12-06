@@ -23,8 +23,11 @@ namespace CRUD_JSON
         public MainWindow()
         {
             InitializeComponent();
-           
-            dtgProduits.ItemsSource = CategoriesServices.GetAllCategories(); 
+
+           Produits p =  ProduitsServices.GetById(6);
+            p.Quantite = 100;
+            ProduitsServices.UpdateProduit(p);
+            dtgProduits.ItemsSource = ProduitsServices.GetAllProduits(); 
         }
     }
 }

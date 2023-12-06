@@ -10,11 +10,11 @@ namespace CRUD_JSON
     {
         static public string Path { get; set; } = "../../../Categories.json";
 
-        static public List<Categories> GetAllCategories()
-        {
-            List<Categories> liste = Profiles.FromObjectToCategories( DAOJson.LireFichier(Path));
+        //static public List<Categories> GetAllCategories()
+        //{
+        //    List<Categories> liste = Profiles.FromObjectToCategories( DAOJson.LireFichier(Path));
 
-            return liste;
-        }
+        //    return liste;
+        //}
     }
 }

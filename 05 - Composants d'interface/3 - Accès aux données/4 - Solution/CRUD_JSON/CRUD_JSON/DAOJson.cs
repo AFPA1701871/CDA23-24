@@ -14,21 +14,20 @@ namespace CRUD_JSON
 
         //Méthodes
 
-        static public void EcrireFichier(List<Produits> liste, string path)
+        static public void EcrireFichier(StructureJson sj, string path)
         {
-            string[] contenu = { JsonConvert.SerializeObject(liste) };
+            string[] contenu = { JsonConvert.SerializeObject(sj) };
             File.WriteAllLines(path, contenu);
         }
-        static public List<Object> LireFichier(string path)
+        static public StructureJson LireFichier(string path)
         //Renvoi un tableau de chaine contenant les records stockées dans le fichier records
         {
             string contenu;
-            List<Object> liste = new List<Object>();
             //Lecture et stockage 
             contenu = File.ReadAllText(path);
             //transformation en liste d'object
-            liste = JsonConvert.DeserializeObject<List<Object>>(contenu);
-            return liste; // renvoi la liste des tableaux
+            StructureJson sj = JsonConvert.DeserializeObject<StructureJson>(contenu);
+            return sj; // renvoi la liste des tableaux
         }
     }
 
