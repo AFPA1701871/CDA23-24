@@ -7,7 +7,38 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <DataGrid Name="dtgProduits"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="6*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="dtgProduits" Grid.Column="1" Grid.Row="1" >
+            <DataGrid.Resources>
+                <Style TargetType="DataGridRow">
+                    <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>
+                </Style>
+            </DataGrid.Resources>
+        </DataGrid>
+        <Grid Grid.Row="3" Grid.Column="1">
 
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="6*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="6*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="6*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="btnAjouter" Content="Ajouter" Click="btnActionClick"/>
+            <Button x:Name="btnModifier" Content="Modifier" Click="btnActionClick" Grid.Column="2"/>
+            <Button x:Name="btnSupprimer" Content="Supprimer" Click="btnActionClick" Grid.Column="4"/>
+        </Grid>
     </Grid>
 </Window>
+

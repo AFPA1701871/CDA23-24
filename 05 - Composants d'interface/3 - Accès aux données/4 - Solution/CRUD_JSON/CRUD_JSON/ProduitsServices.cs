@@ -60,5 +60,14 @@ namespace CRUD_JSON
             // on sauvegarde dans le fichier
             SaveProduits(liste);
         }
+        static public void DeleteProduit(Produits p)
+        //Méthode qui permet de modifier un enregistrement
+        {
+            List<Produits> liste = GetAllProduits();
+            // on recherche la position du produit dans la liste
+            liste.RemoveAll(x => x.IdProduit == p.IdProduit);
+            // on sauvegarde dans le fichier
+            SaveProduits(liste);
+        }
     }
 }

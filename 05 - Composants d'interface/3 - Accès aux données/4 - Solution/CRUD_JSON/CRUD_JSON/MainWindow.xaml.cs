@@ -22,12 +22,37 @@ namespace CRUD_JSON
     {
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent(); 
+            RemplirGrid();
+        }
+        private void RemplirGrid()
+        {
+            dtgProduits.ItemsSource = ProduitsServices.GetAllProduits();
+        }
 
-           Produits p =  ProduitsServices.GetById(6);
-            p.Quantite = 100;
-            ProduitsServices.UpdateProduit(p);
-            dtgProduits.ItemsSource = ProduitsServices.GetAllProduits(); 
+        private void btnActionClick(object sender, EventArgs e)
+        {
+            Produits item;
+            if (((Button)sender).Name == "btnAjouter")
+            {
+                item = new Produits();
+            }
+            else
+            {
+                item = (Produits)dtgProduits.SelectedItem;
+            }
+
+            Window w = new Detail(item, this, (string)((Button)sender).Content);
+            w.ShowDialog();
+            RemplirGrid();
+        }
+        private void Row_DoubleClick(object sender, EventArgs e)
+        {
+            Produits item = (Produits)((DataGridRow)sender).Item;
+
+            Window w = new Detail(item, this, "Modifier");
+            w.ShowDialog();
+            RemplirGrid();
         }
     }
 }
