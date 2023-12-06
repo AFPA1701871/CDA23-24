@@ -25,6 +25,8 @@ namespace WpfAvecScaffold
         private PersonnesController _controller;
         public MainWindow()
         {
+            // scaffold-DbContext -Connection name=default -Provider MySql.EntityFrameworkCore -OutputDir Models/Data -Context PersonnesDbContext -ContextDir Models
+
             InitializeComponent();
             _context = new PersonnesDbContext();
             _controller = new PersonnesController(_context);
