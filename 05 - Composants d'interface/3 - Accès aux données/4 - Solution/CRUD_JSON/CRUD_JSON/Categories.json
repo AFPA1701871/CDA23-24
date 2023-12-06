@@ -1,0 +1,12 @@
+[
+  {
+    "IdCategorie": 1,
+    "LibelleCategorie": "categ1"
+    
+  },
+  {
+    "IdCategorie": 2,
+    "LibelleCategorie": "categ2"
+   
+  }
+]

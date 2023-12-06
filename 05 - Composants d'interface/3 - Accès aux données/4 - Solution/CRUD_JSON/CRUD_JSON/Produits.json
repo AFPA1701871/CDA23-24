@@ -1,0 +1,14 @@
+[
+  {
+    "IdProduit": 1,
+    "LibelleProduit": "prod1",
+    "NumeroProduit": 12,
+    "Quantite": 5
+  },
+  {
+    "IdProduit": 2,
+    "LibelleProduit": "prod2",
+    "NumeroProduit": 1,
+    "Quantite": 50
+  }
+]
